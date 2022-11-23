@@ -1,0 +1,11 @@
+@use '../variables/colors';
+
+.backgroundTest{
+  height: 100vh;
+  width: 100vw;
+  background-color: colors.$black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: colors.$white;
+}

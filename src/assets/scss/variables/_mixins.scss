@@ -1,0 +1,39 @@
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin breakpoint-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+/// @param {Float} $TransTime - Timing of transition
+/// @require $transTime
+@mixin gradientAnimation($transTime) {
+  position: relative;
+  z-index: 100;
+
+  &:before {
+    background-image: linear-gradient(90deg,
+        rgba(0, 104, 255, 1) 0%,
+        rgba(10, 25, 204, 1) 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
