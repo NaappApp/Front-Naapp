@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 
-export const UserChoice = (props) => {
+export const UserType = (props) => {
 
     const [role, SetRole] = useState("");
 
