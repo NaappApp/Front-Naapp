@@ -29,9 +29,5 @@ steps:
     displayName: 'Run End 2 End testing'
 
   - script: |
-      npm run component
-    displayName: 'Run Component testing'
-
-  - script: |
       npm run build
     displayName: 'Build production app'

@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Email from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
 
 
 export const LoginForm = (props) => {
+    let navigate = useNavigate()
     const [passWord, SetPassWord] = useState("");
     const [mail, SetMail] = useState("");
     const [isRemembered, SetIsRemembered] = useState(false);
@@ -34,7 +36,7 @@ export const LoginForm = (props) => {
 
                     </div>
                     <button className='btn btn-outlined form-submit' type="submit" onClick={() => props.handleSubmit(mail, passWord, isRemembered)}>Envoyer</button>
-                    <button className='login-invisible-button' onClick={() => props.ForgottenPassWord()}><p className='form-missing'>Mot de passe oublié ?</p></button>
+                    <button className='login-invisible-button' onClick={() => navigate('/forgottenPassword')}><p className='form-missing'>Mot de passe oublié ?</p></button>
                     <div className='login-register'>
                         <h3>Pas encore membre ? Rejoignez nous !</h3>
                         <button className='btn btn-plain form-register-btn' onClick={() => props.ToRegister()}>Créer votre compte</button>
