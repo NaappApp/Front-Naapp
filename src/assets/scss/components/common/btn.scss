@@ -1,0 +1,35 @@
+@use '../../variables/colors';
+@use '../../variables/fonts';
+
+.btn {
+    background-color: transparent;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: solid 3px transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Luciole';
+    cursor: pointer;
+
+    &:hover {
+        background-color: #fff;
+        border: solid 3px colors.$secondary;
+        color: colors.$secondary;
+        transition: all 0.12s ease-in;
+    }
+}
+
+.btn-plain {
+    background-color: colors.$secondary;
+}
+
+.btn-outlined {
+    border: solid 1px #000;
+
+    &:hover {
+        background-color: #efefef;
+        color: #000;
+        border: solid 1px #000;
+        transition: all 0.25s ease;
+    }
+}

@@ -1,9 +1,25 @@
+@use '../variables/mediaqueries' as size;
+
 /// Mixin to manage responsive breakpoints
 /// @param {String} $breakpoint - Breakpoint name
-/// @require $breakpoints
+/// @require size.$breakpoints
+@mixin breakpoint-down($breakpoint) {
+  @if map-has-key(size.$breakpoints, $breakpoint) {
+    @media (max-width: map-get(size.$breakpoints, $breakpoint)) {
+      //changed from min-width to max-width 
+      @content;
+    }
+  }
+}
+
+
+/// Mixin to manage responsive breakpoints on mobile first
+/// @param {String} $breakpoint - Breakpoint name
+/// @require size.$breakpoints
 @mixin breakpoint-up($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map-has-key(size.$breakpoints, $breakpoint) {
+    @media (min-width: map-get(size.$breakpoints, $breakpoint)) {
+      //changed from min-width to max-width 
       @content;
     }
   }

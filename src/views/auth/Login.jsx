@@ -1,6 +1,6 @@
 import React from 'react'
-import { Forms } from '../components/Forms';
-import { SideBar } from '../components/layout/SideBar';
+import { LoginForm } from '../../components/auth/forms/LoginForm';
+import { SideBar } from '../../components/auth/layout/Sidebar';
 
 export const Login = () => {
     const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ export const Login = () => {
     return (
         <div className='login-form'>
             <SideBar />
-            <Forms handleSubmit={handleSubmit} />
+            <LoginForm handleSubmit={handleSubmit} />
         </div>
     )
 }

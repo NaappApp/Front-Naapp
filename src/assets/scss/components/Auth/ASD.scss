@@ -1,0 +1,25 @@
+@use '../../variables/colors';
+@use '../../variables/fonts';
+
+.input-ASD-Checkbox {
+    display: none;
+}
+
+.checkBoxArray {
+    display: flex;
+    flex-direction: row;
+}
+
+.checkBoxArray>input[type="checkbox"]+label {
+    width: 5em;
+    border: 3px solid colors.$secondary;
+    color: black;
+    background-color: #E4E4E4;
+    border-radius: 15px;
+}
+
+.checkBoxArray>input[type="checkbox"]:checked+label {
+    border: 5px solid colors.$primary;
+    color: black;
+    background-color: #E4E4E4;
+}

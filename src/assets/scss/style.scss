@@ -1,9 +1,3 @@
-/* 
-  WARNING: 
-  please follow the order as described below 
-  to prevent any use error! 
-*/
-
 /* 1 - requirements */
 @use 'tools/reset';
 
@@ -11,8 +5,15 @@
 @use 'global/base';
 
 /* 3 - components */
+@use 'components/auth/forms';
+@use 'components/layout/sidebar';
+@use 'components/auth/userChoice';
+@use 'components/auth/Biography';
+@use 'components/auth/ASD';
+@use 'components/common/btn.scss';
 
 /* 4 - pages */
 
 @use 'pages/home';
 @use 'pages/notFound';
+@use 'pages/auth/login';
