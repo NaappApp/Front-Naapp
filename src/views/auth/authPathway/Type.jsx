@@ -1,6 +1,6 @@
 import React from 'react'
 import { UserType } from '../../../components/auth/forms/UserType';
-import { SideBar } from '../../../components/auth/layout/Sidebar';
+import { Sidebar } from '../../../components/auth/layout/Sidebar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 export const Type = () => {
@@ -31,7 +31,7 @@ export const Type = () => {
     //! Role
     return (
         <div className='login-form'>
-            <SideBar />
+            <Sidebar />
             <UserType saveRole={SaveRole} ReturnToPreviousPage={ReturnToPreviousPage} />
         </div>
     )

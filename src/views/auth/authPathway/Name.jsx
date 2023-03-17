@@ -1,5 +1,5 @@
 import React from 'react'
-import { SideBar } from '../components/layout/SideBar';
+import { Sidebar } from '../components/layout/SideBar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Speudo } from '../components/Speudo'
@@ -21,7 +21,7 @@ export const Name = () => {
 
     return (
         <div className='login-form'>
-            <SideBar />
+            <Sidebar />
             <Speudo SpeudoDataExtraction={SpeudoDataExtraction} ReturnToPreviousPage={ReturnToPreviousPage} />
         </div>
     )

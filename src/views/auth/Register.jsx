@@ -1,33 +1,35 @@
 import React from 'react'
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { Sidebar } from '../../components/auth/layout/Sidebar';
+import { RegisterForm } from '../../components/auth/forms/RegisterForm';
 
-export const Register = (props) => {
-    const [firstPassWord, SetPassFirstWord] = useState("");
-    const [secondPassWord, SetPassSecondWord] = useState("");
-    const [Email, SetEMail] = useState("");
+export const Register = () => {
+    let navigate = useNavigate()
+
+    const DataForTheAccount = {
+        Bio: "",
+        Email: "",
+        Role: "",
+        Name: "",
+        Speudo: "",
+        FamilyName: "",
+        NeuroBalises: [],
+    };
+    const EmailAndPassWord = (email, PSW1, PSW2) => {
+        //TODO , Mail verification is the email is not already in the DB
+        //Todo , create the account in the API
+        DataForTheAccount.Email = email
+        navigate('/name', { state: { DataForTheAccount: DataForTheAccount } })
+    }
+    const ToLogin = () => {
+        navigate('/')
+    }
 
     return (
-        <div className="forms-page-container">
-            <button className='ButtonButton-To-Previous-Page' type="submit" onClick={() => props.ReturnToPreviousPage()} />
-            <div className='forms-container'>
-                <h1 className='form-header-title'>Renseigner vos informations</h1>
-                <form className='login-form-container'>
-
-                    <div className='input-container'>
-                        <input type="email" placeholder='Entrer votre Email' className='login-input  login-input-email' onChange={(e) => { SetEMail(e.target.value) }} />
-                    </div>
-
-                    <div className='input-container'>
-                        <input type="password" placeholder='Entrer un mot de passe' className='login-input  login-input-password' onChange={(e) => { SetPassFirstWord(e.target.value) }} />
-                    </div>
-
-                    <div className='input-container'>
-                        <input type="password" placeholder='Confirmer votre MDP' className='login-input  login-input-password' onChange={(e) => { SetPassSecondWord(e.target.value) }} />
-                    </div>
-                    <button className='login-form-submit LeftMargin-Button18' type="submit" onClick={() => props.EmailAndPassWord(Email, firstPassWord, secondPassWord)}>Suivant</button>
-
-                </form>
-            </div>
+        <div className='Email-MDP-Page'>
+            <Sidebar />
+            <RegisterForm EmailAndPassWord={EmailAndPassWord} ToLogin={ToLogin} />
         </div>
     )
-} 
+}
+

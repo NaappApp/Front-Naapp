@@ -4,7 +4,7 @@ import LogoInstagram from "../../../assets/icons/instagram.svg";
 import LogoLinkedin from "../../../assets/icons/linkedin.svg";
 import LogoFacebook from "../../../assets/icons/facebook.svg";
 
-export const SideBar = () => {
+export const Sidebar = () => {
     return (
         <div className='sidebar'>
             <input type="checkbox" id="show-menu" />

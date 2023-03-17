@@ -39,7 +39,7 @@ export const LoginForm = (props) => {
                     <button className='login-invisible-button' onClick={() => navigate('/forgottenPassword')}><p className='form-missing'>Mot de passe oublié ?</p></button>
                     <div className='login-register'>
                         <h3>Pas encore membre ? Rejoignez nous !</h3>
-                        <button className='btn btn-plain form-register-btn' onClick={() => props.ToRegister()}>Créer votre compte</button>
+                        <button className='btn btn-plain form-register-btn' onClick={() => navigate('/register')}>Créer votre compte</button>
                     </div>
                 </form>
             </div>

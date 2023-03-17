@@ -1,0 +1,37 @@
+@use '../../variables/colors';
+@use '../../variables/fonts';
+.Email-MDP-ButtonToPreviousPage{
+    max-width: 5vw;
+    max-height: 10vh;
+    position: absolute;
+    top: 50px;
+    left: 475px;
+    cursor: pointer;
+}
+.Email-MDP-flex{
+    display: flex;
+    margin-top: 4vh;
+}
+.Email-MDP-flex-column{
+    flex-direction: column;
+}
+.Email-MDP-Page{
+    display : flex;
+}
+.Email-MDP-ReCenter{
+    margin-left :3vw;
+}
+.Email-MDP-LessSpace{
+    margin-top : 2vh;
+}
+
+.Email-MDP-subtitle {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 5vh;
+    line-height: 1.4;
+    width: 70%;
+}
+.Email-MDP-MarginTop{
+    margin-top : 7vh;
+}
