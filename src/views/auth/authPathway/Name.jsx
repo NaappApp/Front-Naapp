@@ -1,28 +1,27 @@
 import React from 'react'
-import { Sidebar } from '../components/layout/SideBar';
+import { Sidebar } from '../../../components/auth/layout/Sidebar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { Speudo } from '../components/Speudo'
+import { UserPersonals } from '../../../components/auth/forms/UserPersonals'
 export const Name = () => {
-
     const navigate = useNavigate()
     const { state } = useLocation()
 
-    const ReturnToPreviousPage = () => {
+    const previousPage = () => {
         navigate('/register')
     }
 
-    const SpeudoDataExtraction = (Speudo, FirstName, LastName) => {
-        state.DataForTheAccount.Speudo = Speudo
-        state.DataForTheAccount.Name = FirstName
-        state.DataForTheAccount.FamilyName = LastName
-        navigate('/userChoice', { state: { DataForTheAccount: state.DataForTheAccount } })
+    const updatePersonals = (pseudo, firstName, lastName) => {
+        state.account.Speudo = pseudo
+        state.account.Name = firstName
+        state.account.FamilyName = lastName
+        navigate('/register/type', { state: { account: state.account } })
     }
 
     return (
         <div className='login-form'>
             <Sidebar />
-            <Speudo SpeudoDataExtraction={SpeudoDataExtraction} ReturnToPreviousPage={ReturnToPreviousPage} />
+            <UserPersonals updatePersonals={updatePersonals} previousPage={previousPage} />
         </div>
     )
 }
