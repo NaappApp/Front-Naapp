@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Sidebar } from "../components/layout/SideBar";
+import { Sidebar } from "../../../components/layout/SideBar";
 import { useLocation } from "react-router-dom";
-import { Asd } from "../components/ASD";
+import { UserTraits } from "../../../components/auth/forms/UserTraits";
 
 const ASDtype = [
   "neuroatypique",
@@ -28,7 +28,7 @@ export const ASD = () => {
   return (
     <div className="Email-MDP-Page">
       <Sidebar />
-      <Asd
+      <UserTraits
         AsdArrayExtraction={AsdArrayExtraction}
         ReturnToPreviousPage={ReturnToPreviousPage}
         ASDtype={ASDtype}

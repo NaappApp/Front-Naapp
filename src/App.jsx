@@ -30,9 +30,9 @@ export const App = () => {
         <Route path="register" element={<Register />} />
         <Route path="register/name" element={<Name />} />
         <Route path="register/type" element={<Type />} />
-        {/* To be done : <Route path="personal" element={<Personal />} />*/}
-        {/* To be done : <Route path="interest" element={<Interest />} />*/}
-        {/* To be done : <Route path="following" element={<Follow />} />*/}
+        {/* <Route path="personal" element={<Personal />} /> */}
+        {/* <Route path="interest" element={<Interest />} /> */}
+        {/* <Route path="following" element={<Follow />} /> */}
 
         {/* Miscellaneous */}
         <Route path="legals" element={<Legals />} />

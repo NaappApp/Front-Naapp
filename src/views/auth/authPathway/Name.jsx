@@ -7,10 +7,6 @@ export const Name = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const previousPage = () => {
-    navigate("/register");
-  };
-
   const updatePersonals = (pseudo, firstName, lastName) => {
     state.account.Speudo = pseudo;
     state.account.Name = firstName;
@@ -21,7 +17,7 @@ export const Name = () => {
   return (
     <div className="login-form">
       <Sidebar />
-      <UserPersonals updatePersonals={updatePersonals} previousPage={previousPage} />
+      <UserPersonals updatePersonals={updatePersonals} />
     </div>
   );
 };

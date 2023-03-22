@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Sidebar } from "../components/layout/SideBar";
-import { Biography } from "../components/Biography";
+import { Sidebar } from "../../../components/layout/SideBar";
+import { UserBio } from "../../../components/auth/forms/UserBio";
 import { useLocation } from "react-router-dom";
 
 export const FinalRoute = () => {
@@ -14,7 +14,7 @@ export const FinalRoute = () => {
         state: { DataForTheAccount: state.DataForTheAccount }
       });
     } else {
-      navigate("/userChoice", { state: { DataForTheAccount: state.DataForTheAccount } });
+      navigate("/type", { state: { DataForTheAccount: state.DataForTheAccount } });
     }
   };
   const BioPage = (BioEntry) => {
@@ -26,7 +26,7 @@ export const FinalRoute = () => {
   return (
     <div className="login-form">
       <Sidebar />
-      <Biography BioPage={BioPage} ReturnToPreviousPage={ReturnToPreviousPage} />
+      <UserBio BioPage={BioPage} ReturnToPreviousPage={ReturnToPreviousPage} />
     </div>
   );
 };

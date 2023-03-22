@@ -1,16 +1,18 @@
 import React from "react";
 import { useState } from "react";
+import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserType = (props) => {
   const [role, SetRole] = useState("");
 
   return (
     <div className="forms-page-container">
-      <button
+      <ReturnButton link="/name" />
+      {/* <button
         className="ButtonButton-To-Previous-Page"
         type="submit"
         onClick={() => props.ReturnToPreviousPage()}
-      />
+      /> */}
       <div className="forms-container">
         <h1 className="form-header-title title-header">Indiquez nous qui vous êtes !</h1>
         <div

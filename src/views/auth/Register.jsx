@@ -1,27 +1,21 @@
 import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../components/auth/layout/Sidebar";
 import { RegisterForm } from "../../components/auth/forms/RegisterForm";
+import { UserContext } from "../../components/auth/UserContext";
 
 export const Register = () => {
+  const user = useContext(UserContext);
   const navigate = useNavigate();
-  const [account, setAccount] = useState({
-    email: "",
-    pseudo: "",
-    firstName: "",
-    lastName: "",
-    bio: "",
-    role: "",
-    NeuroBalises: []
-  });
 
   const createAccount = (email, password, checkPassword) => {
-    //TODO: Email verification and check if email already exists in the DB
-    //TODO: Create the account in the API
+    //TODO: Manage Errors
     if (password === checkPassword) {
-      setAccount((prevData) => ({ ...prevData, email: email }));
-      navigate("/register/name", { state: { account } });
+      //TODO: Create the account in the API
+      //fetch
+      user.updateUser({ email: email });
+      navigate("/register/name");
     }
   };
 

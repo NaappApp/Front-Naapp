@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ReturnButton from "../../../assets/img/ReturnButton.png";
+import { ReturnButton } from "../../UI/ReturnButton";
 import EmailImg from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
@@ -16,12 +16,7 @@ export const RegisterForm = (props) => {
   return (
     <div className="login-page-container Email-MDP-flex-column">
       <div className="Email-MDP-flex">
-        <img
-          src={ReturnButton}
-          alt="Bouton pour retourner à la page précédente"
-          onClick={() => props.ToLogin()}
-          className="Email-MDP-ButtonToPreviousPage"
-        />
+        <ReturnButton link="/login" />
         <h1 className="login-header-title">Inscrivez - vous !</h1>
       </div>
       <div className="login-container">
