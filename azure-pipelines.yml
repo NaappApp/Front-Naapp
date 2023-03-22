@@ -20,9 +20,9 @@ steps:
       npm run build
     displayName: 'Install dependecies'
 
-      - script: |
-      npm run test
-    displayName: 'Run Unit test'
+  - script: |
+      npm run lint
+    displayName: 'Run Linter'
 
   - script: |
       npm run test
