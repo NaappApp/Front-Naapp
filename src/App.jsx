@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from './views/Home';
-import { Login } from './views/auth/Login';
-import { Register } from './views/auth/Register';
-import { Dashboard } from './views/app/Dashboard';
-import { Profile } from './views/app/Profile';
-import { Type } from './views/auth/authPathway/Type';
-import { Name } from './views/auth/authPathway/Name';
-import { Legals } from './views/miscellaneous/Legals';
-import { PrivacyPolicy } from './views/miscellaneous/PrivacyPolicy';
-import { NotFound } from './views/other/NotFound';
-
+import { Home } from "./views/Home";
+import { Login } from "./views/auth/Login";
+import { Register } from "./views/auth/Register";
+import { Dashboard } from "./views/app/Dashboard";
+import { Profile } from "./views/app/Profile";
+import { Type } from "./views/auth/authPathway/Type";
+import { Name } from "./views/auth/authPathway/Name";
+import { Legals } from "./views/miscellaneous/Legals";
+import { PrivacyPolicy } from "./views/miscellaneous/PrivacyPolicy";
+import { NotFound } from "./views/other/NotFound";
 
 export const App = () => {
   return (
@@ -40,10 +39,9 @@ export const App = () => {
         <Route path="privacy" element={<PrivacyPolicy />} />
 
         {/* Other */}
-        <Route path='*' element={<NotFound />} />
-
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter >
+    </BrowserRouter>
     //</AuthContext.Provider>
-  )
-}
+  );
+};

@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Dashboard = () => {
-    return (
-        <div>Dashboard / TO BE DONE :)</div>
-    )
-}
+  return <div>Dashboard / TO BE DONE :)</div>;
+};
