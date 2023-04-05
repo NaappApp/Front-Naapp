@@ -2,7 +2,7 @@
 @use '../../variables/fonts';
 
 .btn {
-    background-color: transparent;
+    background-color: colors.$secondary;
     padding: 10px 25px;
     border-radius: 50px;
     border: solid 3px transparent;
@@ -21,15 +21,4 @@
 
 .btn-plain {
     background-color: colors.$secondary;
-}
-
-.btn-outlined {
-    border: solid 1px #000;
-
-    &:hover {
-        background-color: #efefef;
-        color: #000;
-        border: solid 1px #000;
-        transition: all 0.25s ease;
-    }
 }

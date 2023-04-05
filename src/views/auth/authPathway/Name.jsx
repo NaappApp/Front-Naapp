@@ -1,7 +1,6 @@
 import React from "react";
 import { Sidebar } from "../../../components/auth/layout/Sidebar";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserPersonals } from "../../../components/auth/forms/UserPersonals";
 export const Name = () => {
   const navigate = useNavigate();

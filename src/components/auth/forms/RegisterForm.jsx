@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReturnButton } from "../../UI/ReturnButton";
 import EmailImg from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
@@ -16,14 +15,13 @@ export const RegisterForm = (props) => {
   return (
     <div className="login-page-container Email-MDP-flex-column">
       <div className="Email-MDP-flex">
-        <ReturnButton link="/login" />
         <h1 className="login-header-title">Inscrivez - vous !</h1>
-      </div>
-      <div className="login-container">
         <h2 className="Email-MDP-subtitle">
           Veuillez vous inscrire afin d’interagir avec les autres membres de Naapp et voir leurs
           publications.
         </h2>
+      </div>
+      <div className="login-container">
         <form className="form-container">
           <div className="form-input-container">
             <label className="form-input-label" htmlFor="email">
