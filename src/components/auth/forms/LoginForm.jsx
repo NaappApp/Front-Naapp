@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Email from "../../../assets/icons/mail.svg";
@@ -51,6 +52,7 @@ export const LoginForm = (props) => {
           <input
             type={isPlainPassword ? "text" : "password"}
             placeholder="********"
+            autoComplete="current-password"
             className="form-input  form-input-password"
             id="pwd"
             onChange={(e) => {
@@ -93,4 +95,8 @@ export const LoginForm = (props) => {
       </form>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
 };

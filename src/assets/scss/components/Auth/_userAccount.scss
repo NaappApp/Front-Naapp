@@ -1,5 +1,6 @@
 @use '../../variables/colors';
 @use '../../variables/fonts';
+
 .Email-MDP-ButtonToPreviousPage{
     max-width: 5vw;
     max-height: 10vh;
@@ -19,7 +20,7 @@
     display : flex;
 }
 .Email-MDP-ReCenter{
-    margin-left :3vw;
+    text-align: center;
 }
 .Email-MDP-LessSpace{
     margin-top : 2vh;
