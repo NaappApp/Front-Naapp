@@ -76,7 +76,7 @@ export const LoginForm = (props) => {
         </div>
         <div className="form-submit">
           <button
-            className="btn btn-outlined"
+            className="btn btn-plain"
             type="submit"
             onClick={() => props.handleSubmit(mail, passWord, isRemembered)}>
             Se connecter
@@ -88,7 +88,9 @@ export const LoginForm = (props) => {
 
         <div className="login-register">
           <h3>Pas encore membre ? Rejoignez nous !</h3>
-          <button className="btn btn-plain form-register-btn" onClick={() => navigate("/register")}>
+          <button
+            className="btn btn-outlined form-register-btn"
+            onClick={() => navigate("/register")}>
             Créer votre compte
           </button>
         </div>

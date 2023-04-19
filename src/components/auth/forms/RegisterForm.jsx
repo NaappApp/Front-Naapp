@@ -44,6 +44,9 @@ export const RegisterForm = (props) => {
             id="email"
             onChange={(e) => SetEmail(e.target.value)}
           />
+          {props.errorMessage.property === "email" && (
+            <span className="error-message">{props.errorMessage.message}</span>
+          )}
         </div>
         <div className="form-input-container form-input-container--password">
           <label className="form-input-label" htmlFor="pwd">
@@ -64,7 +67,9 @@ export const RegisterForm = (props) => {
             id="pwd"
             onChange={(e) => SetPassword(e.target.value)}
           />
-          <span className="error-message">{props.errorMessage}</span>
+          {props.errorMessage.property === "password" && (
+            <span className="error-message">{props.errorMessage.message}</span>
+          )}
         </div>
         <div className="form-input-container form-input-container--password">
           <label className="form-input-label" htmlFor="checkpwd">
@@ -85,15 +90,17 @@ export const RegisterForm = (props) => {
             id="checkpwd"
             onChange={(e) => SetCheckPassword(e.target.value)}
           />
-          <span className="error-message">{props.errorMessage}</span>
+          {props.errorMessage.property === "password" && (
+            <span className="error-message">{props.errorMessage.message}</span>
+          )}
         </div>
-        <button className="btn btn-outlined form-submit" type="submit">
+        <button className="btn btn-plain form-submit" type="submit">
           S’inscrire
         </button>
 
         <div className="Email-MDP-MarginTop">
           <h3 className="Email-MDP-ReCenter">Déja membre ?</h3>
-          <button className="btn btn-plain form-register-btn" onClick={() => navigate("/")}>
+          <button className="btn btn-outlined form-register-btn" onClick={() => navigate("/")}>
             Connexion
           </button>
         </div>

@@ -1,27 +1,61 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../components/auth/layout/Sidebar";
 import { RegisterForm } from "../../components/auth/forms/RegisterForm";
-import { UserContext } from "../../components/auth/UserContext";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../store/user/userSlice";
 
 export const Register = () => {
-  const userContext = useContext(UserContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  let errorMessage = null;
+  const [errorMessage, setErrorMessage] = useState(null);
+  const handleUpdateUser = (user) => {
+    console.log("handleUpdateUser");
+    dispatch(updateUser(user));
+    dispatch(createAccount(user));
+  };
 
   const createAccount = (email, password, checkPassword) => {
-    console.log(UserContext);
-    //TODO: Manage Errors
-    if (password === checkPassword) {
-      //TODO: Create the account in the API
-      //fetch
-      userContext.updateUser({ email: email });
-      navigate("/register/name");
-    } else {
-      console.log("Passwords don't match");
-      errorMessage = "Les mots de passe ne correspondent pas";
+    if (password !== checkPassword) {
+      const err = {
+        property: "password",
+        message: "Les mots de passe ne correspondent pas"
+      };
+      setErrorMessage(err);
+      return;
     }
+    if (!password) {
+      const err = {
+        property: "password",
+        message: "Veuillez entrer un mot de passe"
+      };
+      setErrorMessage(err);
+      return;
+    }
+    if (!email) {
+      const err = {
+        property: "email",
+        message: "Veuillez entrer une adresse email"
+      };
+      setErrorMessage(err);
+      return;
+    }
+    if (password.length < 8) {
+      const err = {
+        property: "password",
+        message: "Le mot de passe doit contenir au moins 8 caractères"
+      };
+      setErrorMessage(err);
+      return;
+    }
+
+    const user = {
+      email: email,
+      password: password
+    };
+    handleUpdateUser(user);
+    console.log("navigate");
+    navigate("/register/name");
   };
 
   return (

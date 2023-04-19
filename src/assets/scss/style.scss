@@ -5,14 +5,16 @@
 @use 'global/base';
 
 /* 3 - components */
-@use 'components/auth/forms';
+@use 'components/common/btn.scss';
+@use 'components/common/errors.scss';
 @use 'components/layout/sidebar';
 @use 'components/layout/returnBtn';
+@use 'components/auth/forms';
 @use 'components/auth/userType';
-@use 'components/auth/UserAccount';
-@use 'components/auth/Biography';
-@use 'components/auth/ASD';
-@use 'components/common/btn.scss';
+@use 'components/auth/userAccount';
+@use 'components/auth/userBio';
+@use 'components/auth/userNames';
+@use 'components/auth/userTraits';
 
 /* 4 - pages */
 

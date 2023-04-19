@@ -10,27 +10,13 @@ import { Name } from "./views/auth/authPathway/Name";
 import { Legals } from "./views/miscellaneous/Legals";
 import { PrivacyPolicy } from "./views/miscellaneous/PrivacyPolicy";
 import { NotFound } from "./views/other/NotFound";
-import { UserContext } from "./components/auth/UserContext";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 export const App = () => {
-  const user = {
-    email: "example@mail.com",
-    pseudo: "example",
-    firstName: "John",
-    lastName: "Doe",
-    bio: "Lorem ipsum dolor sit amet",
-    role: "user",
-    neuroTraits: ["trait1", "trait2", "trait3"]
-  };
-
-  const actions = {
-    updateUser: (newUserData) => {
-      console.log(`Updating user data with ${newUserData}`);
-    }
-  };
   return (
     //<AuthContext.Provider value={[state, actions]}>
-    <UserContext.Provider value={[user, actions]}>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route index={true} element={<Home />} />
@@ -59,7 +45,7 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </UserContext.Provider>
+    </Provider>
 
     //</AuthContext.Provider>
   );
