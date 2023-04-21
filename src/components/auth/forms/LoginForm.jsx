@@ -88,9 +88,7 @@ export const LoginForm = (props) => {
 
         <div className="login-register">
           <h3>Pas encore membre ? Rejoignez nous !</h3>
-          <button
-            className="btn btn-outlined form-register-btn"
-            onClick={() => navigate("/register")}>
+          <button className="btn btn-outlined mt-6" onClick={() => navigate("/register")}>
             Créer votre compte
           </button>
         </div>

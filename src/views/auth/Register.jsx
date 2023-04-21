@@ -4,15 +4,15 @@ import { Sidebar } from "../../components/auth/layout/Sidebar";
 import { RegisterForm } from "../../components/auth/forms/RegisterForm";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../store/user/userSlice";
+import { registerAccount } from "../../store/user/userSlice";
 
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const handleUpdateUser = (user) => {
-    console.log("handleUpdateUser");
     dispatch(updateUser(user));
-    dispatch(createAccount(user));
+    dispatch(registerAccount(user));
   };
 
   const createAccount = (email, password, checkPassword) => {
@@ -54,7 +54,6 @@ export const Register = () => {
       password: password
     };
     handleUpdateUser(user);
-    console.log("navigate");
     navigate("/register/name");
   };
 

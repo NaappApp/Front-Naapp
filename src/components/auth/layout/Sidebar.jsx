@@ -26,7 +26,7 @@ export const Sidebar = () => {
         </div>
 
         <footer className="sidebar-footer">
-          <div className="sidebar-reseaux">
+          <div className="sidebar-reseaux flex">
             <a
               href="https://www.facebook.com/profile.php?id=100089179046629"
               target="_blank"

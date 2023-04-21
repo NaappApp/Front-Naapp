@@ -14,8 +14,8 @@ export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    createAccout: (state, action) => {
-      console.log("createAccout", action.payload);
+    registerAccount: (state, action) => {
+      console.log("createAccount", action.payload);
       fetch("https://naappapirec.azurewebsites.net/api/Auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,5 +36,5 @@ export const userSlice = createSlice({
   }
 });
 
-export const { updateUser } = userSlice.actions;
+export const { registerAccount, updateUser } = userSlice.actions;
 export default userSlice.reducer;

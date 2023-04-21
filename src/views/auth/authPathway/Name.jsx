@@ -1,16 +1,17 @@
 import React from "react";
-import { Sidebar } from "../../../components/auth/layout/Sidebar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserPersonals } from "../../../components/auth/forms/UserPersonals";
-export const Name = () => {
-  const navigate = useNavigate();
-  const { state } = useLocation();
+import { Sidebar } from "../../../components/auth/layout/Sidebar";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../../store/user/userSlice";
 
-  const updatePersonals = (pseudo, firstName, lastName) => {
-    state.account.Speudo = pseudo;
-    state.account.Name = firstName;
-    state.account.FamilyName = lastName;
-    navigate("/register/type", { state: { account: state.account } });
+export const Name = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const updatePersonals = (user) => {
+    dispatch(updateUser(user));
+    navigate("/register/type");
   };
 
   return (

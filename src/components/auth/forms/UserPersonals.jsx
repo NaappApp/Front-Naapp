@@ -3,54 +3,76 @@ import { useState } from "react";
 import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserPersonals = (props) => {
-  // TODO:
   const [pseudo, SetPseudo] = useState("");
   const [firstName, SetFirstName] = useState("");
   const [lastName, SetLastName] = useState("");
 
-  return (
-    <div className="forms-page-container">
-      <ReturnButton link="/register" />
+  const handleSubmit = (event) => {
+    const user = {
+      pseudo: pseudo,
+      firstName: firstName,
+      lastName: lastName
+    };
 
-      <div className="forms-container">
-        <h1 className="form-header-title">Renseigner vos informations</h1>
-        <form className="login-form-container">
-          <div className="input-container">
+    event.preventDefault();
+    props.updatePersonals(user);
+  };
+
+  return (
+    <div className="login-page-container relative">
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register" />
+      </div>
+
+      <div className="login-container">
+        <h1 className="login-header-title">Renseigner vos informations</h1>
+        <h2 className="login-header-subtitle">
+          Vos publications et votre profil apparaîtront sous ce nom
+        </h2>
+        <form className="form-container" onSubmit={handleSubmit}>
+          <div className="form-input-container  form-input-container-regular">
+            <label className="form-input-label" htmlFor="pseudo">
+              Pseudonyme
+            </label>
             <input
               type="text"
               placeholder="Entrer votre Pseudo"
-              className="login-input  login-input-Speudo"
+              className="form-input  form-input-email form-input-regular"
               onChange={(e) => {
                 SetPseudo(e.target.value);
               }}
             />
           </div>
 
-          <div className="input-container">
+          <div className="form-input-container form-input-container-regular">
+            <label className="form-input-label" htmlFor="pseudo">
+              Pseudonyme
+            </label>
             <input
               type="text"
               placeholder="Entrer votre Prénom"
-              className="login-input  login-input-Prenom"
+              className="form-input  form-input-email form-input-regular"
               onChange={(e) => {
                 SetFirstName(e.target.value);
               }}
             />
           </div>
 
-          <div className="input-container">
+          <div className="form-input-container form-input-container-regular">
+            <label className="form-input-label" htmlFor="pseudo">
+              Pseudonyme
+            </label>
             <input
               type="text"
               placeholder="Entrer votre Nom"
-              className="login-input  login-input-Nom"
+              className="form-input  form-input-email form-input-regular"
               onChange={(e) => {
                 SetLastName(e.target.value);
               }}
             />
           </div>
-          <button
-            className="login-form-submit LeftMargin-Button18"
-            type="submit"
-            onClick={() => props.updatePersonals(pseudo, firstName, lastName)}>
+
+          <button className="btn btn-plain form-submit" type="submit">
             Suivant
           </button>
         </form>

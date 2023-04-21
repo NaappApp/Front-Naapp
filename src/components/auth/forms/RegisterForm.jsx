@@ -13,10 +13,6 @@ export const RegisterForm = (props) => {
   let navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    // Check if the event was triggered by the Autocomplete feature
-    if (!event.isTrusted) {
-      return;
-    }
     event.preventDefault();
     props.createAccount(email, passWord, checkPassword);
   };
@@ -100,7 +96,7 @@ export const RegisterForm = (props) => {
 
         <div className="Email-MDP-MarginTop">
           <h3 className="Email-MDP-ReCenter">Déja membre ?</h3>
-          <button className="btn btn-outlined form-register-btn" onClick={() => navigate("/")}>
+          <button className="btn btn-outlined mt-6" onClick={() => navigate("/")}>
             Connexion
           </button>
         </div>
