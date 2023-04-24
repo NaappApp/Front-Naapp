@@ -37,7 +37,7 @@ export const UserPersonals = (props) => {
             <input
               type="text"
               placeholder="Entrer votre Pseudo"
-              className="form-input  form-input-email form-input-regular"
+              className="form-input form-input-email form-input-regular"
               onChange={(e) => {
                 SetPseudo(e.target.value);
               }}
@@ -46,12 +46,12 @@ export const UserPersonals = (props) => {
 
           <div className="form-input-container form-input-container-regular">
             <label className="form-input-label" htmlFor="pseudo">
-              Pseudonyme
+              Prénom
             </label>
             <input
               type="text"
               placeholder="Entrer votre Prénom"
-              className="form-input  form-input-email form-input-regular"
+              className="form-input form-input-email form-input-regular"
               onChange={(e) => {
                 SetFirstName(e.target.value);
               }}
@@ -60,12 +60,12 @@ export const UserPersonals = (props) => {
 
           <div className="form-input-container form-input-container-regular">
             <label className="form-input-label" htmlFor="pseudo">
-              Pseudonyme
+              Nom
             </label>
             <input
               type="text"
               placeholder="Entrer votre Nom"
-              className="form-input  form-input-email form-input-regular"
+              className="form-input form-input-email form-input-regular"
               onChange={(e) => {
                 SetLastName(e.target.value);
               }}

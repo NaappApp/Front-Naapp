@@ -16,7 +16,7 @@ export const Sidebar = () => {
         <div className="sidebar-container">
           <img src={Image} alt="logo naapp" className="sidebar-logo" />
           <p className="sidebar-text">
-            Premier réseau social français dédié à l’accès à l’information sur la neuroatypie.{" "}
+            Le réseau social français dédié à l’accès à l’information sur la neuroatypie.
           </p>
           <p className="sidebar-text-par">
             Directement concerné, curieux, ou encore professionnel de santé, partagez vos
