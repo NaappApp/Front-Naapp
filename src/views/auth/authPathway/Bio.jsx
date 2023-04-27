@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Sidebar } from "../../../components/layout/SideBar";
+import { Sidebar } from "../../../components/auth/layout/Sidebar";
 import { UserBio } from "../../../components/auth/forms/UserBio";
 import { useLocation } from "react-router-dom";
 
-export const FinalRoute = () => {
+export const Bio = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   console.log(state.DataForTheAccount.NeuroBalises);

@@ -7,6 +7,7 @@ import { Dashboard } from "./views/app/Dashboard";
 import { Profile } from "./views/app/Profile";
 import { Type } from "./views/auth/authPathway/Type";
 import { Name } from "./views/auth/authPathway/Name";
+import { Bio } from "./views/auth/authPathway/Bio";
 import { Legals } from "./views/miscellaneous/Legals";
 import { PrivacyPolicy } from "./views/miscellaneous/PrivacyPolicy";
 import { NotFound } from "./views/other/NotFound";
@@ -33,6 +34,7 @@ export const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="register/name" element={<Name />} />
           <Route path="register/type" element={<Type />} />
+          <Route path="register/type" element={<Bio />} />
           {/* <Route path="personal" element={<Personal />} /> */}
           {/* <Route path="interest" element={<Interest />} /> */}
           {/* <Route path="following" element={<Follow />} /> */}

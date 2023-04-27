@@ -1,76 +1,63 @@
 @use '../../variables/colors';
 @use '../../variables/fonts';
 
-.test {
-    width: 100%;
-    height: 100vh;
+.form-input-container--radio {
+    background-color: #E4E4E4;
+    padding: 20px 30px;
+    padding-right: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
+    justify-content: space-between;
+    color: black;
+    border: solid 3px transparent;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
 
-.title-header {
-    border-bottom: 5px solid gray;
-}
+    &--selected {
+        border: solid 3px colors.$primary;
 
-.radio-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 35px;
+        .form-input-radio--label {
+          color: colors.$primary;
+        }
+    }
 
-    input[type="radio"] {
-        display: none;
+    &:hover {
+        border: solid 3px colors.$primary;
+    }
+
+    &::after {
+      content: none;
     }
 }
 
-
-input[type="radio"].role+label {
-    background-color: #E4E4E4;
-    height: 10vh;
-    width: 50vw;
-    color: colors.$primary;
-    line-height: 1.5;
-    border-radius: 5px;
-    font-size: x-large;
-    margin: 5px;
-    text-align: center;
-    cursor: pointer;
-    vertical-align: middle;
-
-
+.form-input-radio {
+  appearance: none;
 }
 
-input[type="radio"].role:checked+label {
-    background-color: #E4E4E4;
-    font-weight: bold;
-    font-size: xx-large;
+.form-profil-description {
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: colors.$grey;
 }
 
-.button-container {
-    display: block;
-    margin-top: 35px;
-    ;
-    margin-left: 45vw;
-    height: 2vw;
-    width: 5vw;
+.form-input-radio--label {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: colors.$grey;
+    transition: all 0.15s ease-in-out;
 }
 
-.button {
-    padding: 10px 15px;
-    background-color: colors.$primary;
-    border-radius: 25px;
-    border: solid 3px transparent;
-    color: #FFF;
-    font-size: 2rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #FFF;
-    border: solid 3px colors.$primary;
-    color: colors.$primary;
-    transition: 0.3s;
+.form-input-radio--chevron {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    svg {
+        width: 10px;
+        height: 10px;
+        fill: colors.$grey;
+    }
 }
