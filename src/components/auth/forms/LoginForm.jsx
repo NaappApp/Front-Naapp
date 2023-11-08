@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Email from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
+import { MobileSidebar } from "../layout/MobileSidebar";
 
 export const LoginForm = (props) => {
   let navigate = useNavigate();
@@ -15,6 +16,7 @@ export const LoginForm = (props) => {
 
   return (
     <div className="login-page-container">
+      <MobileSidebar link="/" />
       <div className="login-container">
         <h1 className="login-header-title">Je me connecte</h1>
         <h2 className="login-header-subtitle">
