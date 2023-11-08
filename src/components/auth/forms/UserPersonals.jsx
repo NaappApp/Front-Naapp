@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { MobileSidebar } from "../layout/MobileSidebar";
+import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserPersonals = (props) => {
   const [pseudo, SetPseudo] = useState("");
@@ -20,7 +20,10 @@ export const UserPersonals = (props) => {
 
   return (
     <div className="login-page-container relative">
-      <MobileSidebar link="/register" />
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register" />
+      </div>
+
       <div className="login-container">
         <h1 className="login-header-title">Renseigner vos informations</h1>
         <h2 className="login-header-subtitle">
