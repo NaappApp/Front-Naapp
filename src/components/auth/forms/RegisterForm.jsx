@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import EmailImg from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
+import { MobileSidebar } from "../layout/MobileSidebar";
 
 export const RegisterForm = (props) => {
   const [passWord, SetPassword] = useState("");
@@ -18,7 +19,8 @@ export const RegisterForm = (props) => {
   };
 
   return (
-    <div className="login-page-container Email-MDP-flex-column">
+    <div className="register-page-container Email-MDP-flex-column">
+      <MobileSidebar link="/" />
       <div className="login-container">
         <h1 className="login-header-title">Inscrivez - vous !</h1>
         <h2 className="login-header-subtitle">
