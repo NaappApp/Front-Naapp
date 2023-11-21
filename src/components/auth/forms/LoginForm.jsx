@@ -13,6 +13,7 @@ export const LoginForm = (props) => {
   const [mail, SetMail] = useState("");
   const [isRemembered, SetIsRemembered] = useState(false);
   const [isPlainPassword, SetIsPlainPassword] = useState(false);
+  const [error, setError] = useState(null);
 
   return (
     <div className="login-page-container">
@@ -79,14 +80,18 @@ export const LoginForm = (props) => {
         <div className="form-submit">
           <button
             className="btn btn-plain"
-            type="submit"
-            onClick={() => props.handleSubmit(mail, passWord, isRemembered)}>
+            type="button"
+            onClick={() => {
+              setError(null);
+              props.handleSubmit(mail, passWord, isRemembered).catch((err) => setError(err.message));
+            }}>
             Se connecter
           </button>
           <button className="login-invisible-button" onClick={() => navigate("/forgottenPassword")}>
             <p className="form-missing">Mot de passe oublié ?</p>
           </button>
         </div>
+        {error && <h2 className="error-message login-header-subtitle">{error}</h2>}
 
         <div className="login-register">
           <h3>Pas encore membre ? Rejoignez nous !</h3>
