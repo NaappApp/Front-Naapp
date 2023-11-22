@@ -8,7 +8,7 @@ export const Accounts = () => {
   return (
     <section className="FlexForApp">
       <SideBar state={state}></SideBar>
-      <Account info={state}></Account>
+      <Account />
     </section>
   );
 };

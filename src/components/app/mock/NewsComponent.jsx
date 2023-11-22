@@ -1,12 +1,13 @@
 import React from "react";
 import { Post } from "./Post";
-export const News = (props) => {
+export const News = () => {
   const EmptyPost = {
-    Name: props.info.Data.Name,
-    FamilyName: props.info.Data.FamilyName,
-    NeuroBalises: props.info.Data.NeuroBalises,
+    Name: "Mathis",
+    FamilyName: "SIlotia",
+    NeuroBalises: [],
     Likes: 0,
-    text: ""
+    text: "",
+    From: "News"
   };
   const PostExemple = [
     {

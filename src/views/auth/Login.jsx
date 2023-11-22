@@ -32,11 +32,10 @@ export const Login = () => {
         const expirationTime = new Date();
         expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
 
-        document.cookie = `token=${
+        document.cookie = `${
           data.token
         }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;
         document.cookie = `tokenExpiration=${expirationTime.toUTCString()}; Secure; SameSite=None`;
-
         navigate("/app");
       } else {
         const result = "err" + data.msg;

@@ -1,41 +1,56 @@
 import AccountImg from "../../../assets/icons/account.svg";
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
-import "../../../assets/scss/components/Mock/Event.scss";
+import "../../../assets/scss/pages/_Account.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
-export const Account = (props) => {
-  const listItems = props.info.Data.NeuroBalises.map(
-    (e) => (
-      <p className="Post-Header-AsdList-Item2" key={e}>
-        {e}
-      </p>
-    )
-    //todo : extracte the data from the textarea
-  );
+import { useEffect, useState } from "react";
 
-  const listItems2 = props.info.Data.InterestCenter.map((e) => (
-    <p className="Post-Header-AsdList-Item2" key={e}>
-      {e}
-    </p>
-  ));
+export const Account = () => {
+  const [user, setUser] = useState({});
 
-  const listItems3 = props.info.Data.NeuroBalises.map(
-    (e) => (
-      <p className="Post-Header-AsdList-Item" key={e}>
-        {e}
-      </p>
-    )
-    //todo : extracte the data from the textarea
-  );
+  const tokenCookie = document.cookie.split("; ")[0];
+  console.log(tokenCookie);
+
+  useEffect(() => {
+    console.log("entered useeffect");
+    const getUser = async () => {
+      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/me", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenCookie}`
+        }
+      });
+      const data = await response.json();
+      setUser(data);
+    };
+    getUser();
+  }, []);
+  console.log(user);
+  // const listItems = user.traits.map(
+  //   (e) => (
+  //     <p className="Post-Header-AsdList-Item2" key={e}>
+  //       {e}
+  //     </p>
+  //   )
+  //   //todo : extracte the data from the textarea
+  // );
+
+  // const listItems2 = user.Interests.map((e) => (
+  //   <p className="Post-Header-AsdList-Item2" key={e}>
+  //     {e}
+  //   </p>
+  // ));
+
   return (
     <div className="Account">
       <div className="Account-Header">
-        <img src={props.empty ? AccountImg : Image} alt="" className="Account-Image" />
+        <img src={user.empty ? AccountImg : Image} alt="" className="Account-Image" />
         <div>
           <p className="Account-Header-Names">
-            {props.info.Data.Name} {props.info.Data.FamilyName}
+            {user.Name} {user.FamilyName}
           </p>
-          <div className="Tag-NeuroBalises">{listItems}</div>
+          {/* <div className="Tag-traits">{listItems}</div> */}
         </div>
         <button className="ModifyProfile">Modifier le profile</button>
       </div>
@@ -43,12 +58,12 @@ export const Account = (props) => {
         <div className="Follow">
           <FontAwesomeIcon icon={faUsers} />
           <p className="Follow-text">
-            {props.info.Data.Follower} abonné(e)s - {props.info.Data.Following} Suivi(e)s
+            {user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s
           </p>
         </div>
         <div className="InterestCenter">
           <p className="InterestCenter-Title">Centre d&apos;intérêt</p>
-          <div className="InterestCenter-List">{listItems2}</div>
+          {/* <div className="InterestCenter-List">{listItems2}</div> */}
         </div>
         <div className="Activities">
           <div className="Menu">
@@ -65,15 +80,15 @@ export const Account = (props) => {
             </div>
             <div className="Post">
               <div className="Post-Header">
-                <img src={props.empty ? AccountImg : Image} alt="" className="Post-Image" />
+                <img src={user.empty ? AccountImg : Image} alt="" className="Post-Image" />
                 <div className="Post-Header-Flex">
                   <p className="Post-Header-Names">
-                    {props.info.Data.Name} {props.info.Data.FamilyName}
+                    {user.Name} {user.FamilyName}
                   </p>
-                  <div className="Post-Header-AsdList">{listItems3}</div>
+                  {/* <div className="Post-Header-AsdList">{listItems3}</div> */}
                 </div>
               </div>
-              <p className="Post-text">{props.info.Data.Bio}</p>
+              <p className="Post-text">{user.Bio}</p>
             </div>
           </div>
           <div className="MyEvent" id="MyEvent">
@@ -82,13 +97,13 @@ export const Account = (props) => {
             </div>
             <div className="Event">
               <div className="Event-Header">
-                <img src={props.empty ? AccountImg : Image} alt="" className="Event-Image" />
+                <img src={user.empty ? AccountImg : Image} alt="" className="Event-Image" />
                 <div className="Event-Header-Flex">
                   <p className="Event-Header-Names">Test</p>
-                  <div className="Event-Header-AsdList">{listItems3}</div>
+                  {/* <div className="Event-Header-AsdList">{listItems3}</div> */}
                 </div>
               </div>
-              <p className="Event-text">{props.info.Data.Bio}</p>
+              <p className="Event-text">{user.Bio}</p>
             </div>
           </div>
         </div>
