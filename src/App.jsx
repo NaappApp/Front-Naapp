@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home";
 import { Login } from "./views/auth/Login";
 import { Register } from "./views/auth/Register";
-import { Dashboard } from "./views/app/Dashboard";
 import { Profile } from "./views/app/Profile";
 import { NewsPage } from "./views/app/NewsPage";
 import { Events } from "./views/app/Events";
@@ -28,7 +27,7 @@ export const App = () => {
           <Route index={true} element={<Home />} />
 
           {/* App */}
-          <Route path="app" element={<Dashboard />}>
+          <Route path="app" element={<NewsPage />}>
             <Route path="profile" element={<Profile />} />
           </Route>
 

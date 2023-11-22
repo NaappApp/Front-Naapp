@@ -4,60 +4,49 @@ import { Sidebar } from "../../components/auth/layout/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const mock = [
-    {
-      Email: "galliez@y.com",
-      mdp: "ynov",
-      InterestCenter: [],
-      NeuroBalises: [],
-      Name: "Galliez",
-      FamilyName: "Loelia",
-      Role: "fatiguer",
-      Speudo: "",
-      Bio: "Bonjour je suis un dev web qui aime react",
-      From: "",
-      Follower: 180,
-      Following: 260
-    },
-    {
-      Email: "noa@y.com",
-      mdp: "ynov",
-      InterestCenter: [],
-      NeuroBalises: ["Dysléxie", "Dyscalculie", "Dysphasie", "TDA"],
-      Name: "Noa",
-      FamilyName: "LeFaux",
-      Role: "NeuroAtypique",
-      Speudo: "",
-      Bio: "Bonjour je suis un dev web qui aime le code et les jeux video",
-      From: "",
-      Follower: 180,
-      Following: 260
-    }
-  ];
-
-  // eslint-disable-next-line no-unused-vars
-  const handleSubmit = (email, psw) => {
-    //TODO: Add Api
-    fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, psw })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+  const handleSubmit = async (email, password) => {
+    try {
+      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
       });
-    onAuthenticationSucces();
-    // Here check if the given email & password match any data in our api
-  };
 
-  const onAuthenticationSucces = () => {
-    // Must redirect to the '/redirected url once user is loged
-    navigate("/MainInApp", { state: { Data: mock[0] } });
+      if (!response.ok) {
+        const data = await response.json();
+
+        if (response.status === 400 && data.msg === "Invalid credentials") {
+          throw new Error("Adresse e-mail ou mot de passe invalide !");
+        } else {
+          throw new Error(data.msg || `Erreur de connexion: ${response.status}`);
+        }
+      }
+
+      const data = await response.json();
+
+      if (data.token) {
+        const expirationTime = new Date();
+        expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
+
+        document.cookie = `token=${
+          data.token
+        }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;
+        document.cookie = `tokenExpiration=${expirationTime.toUTCString()}; Secure; SameSite=None`;
+
+        navigate("/app");
+      } else {
+        const result = "err" + data.msg;
+        console.log(result);
+        throw new Error(result);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      throw error;
+    }
   };
 
   return (
