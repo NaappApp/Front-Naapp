@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Email from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
+// import variables from "../../../assets/scss/variables/_colors.scss";
 
 export const LoginForm = (props) => {
   let navigate = useNavigate();
@@ -15,6 +16,7 @@ export const LoginForm = (props) => {
 
   return (
     <div className="login-page-container">
+      {/* <div className="login-page-burger-button" id="burger-button" onClick={burgerMenu}></div> */}
       <div className="login-container">
         <h1 className="login-header-title">Je me connecte</h1>
         <h2 className="login-header-subtitle">
@@ -100,3 +102,15 @@ export const LoginForm = (props) => {
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
+
+// function burgerMenu() {
+//   const btn = document.getElementById("burger-button");
+//   console.log(btn.classList.contains("active"));
+//   if (btn.classList.contains("active")) {
+//     btn.style.backgroundColor = variables.primary;
+//     btn.classList.remove("active");
+//   } else {
+//     btn.style.backgroundColor = variables.secondary;
+//     btn.classList.add("active");
+//   }
+// }
