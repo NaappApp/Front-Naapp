@@ -1,0 +1,35 @@
+.NewsPage-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 4vh;
+}
+
+.NewsPage-Right-MSG {
+    position: absolute;
+    top: 8vh;
+    left: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 25vw;
+    height: fit-content;
+    border: #B87FE5 2px solid ;
+    border-radius: 5px;
+}
+.NewsPage-Right-MSG > h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 2vh;
+}
+
+.NewsPage-Right-MSG > p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 2vh;
+}

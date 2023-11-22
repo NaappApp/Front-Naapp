@@ -1,17 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { ReturnButton } from "../../UI/ReturnButton";
 import Chevron from "../../../assets/icons/chevron-right.svg";
-import { MobileSidebar } from "../layout/MobileSidebar";
 
 export const UserType = (props) => {
   const [role, SetRole] = useState("");
+  const [error, SetError] = useState("");
+
   const handleSubmit = (event) => {
-    console.log();
+    event.preventDefault();
+
+    if (role === "") {
+      SetError("Veuillez sélectionner un profil");
+      return;
+    }
+
     const user = {
       role: role
     };
 
-    event.preventDefault();
     props.updateType(user);
   };
 
@@ -42,9 +49,10 @@ export const UserType = (props) => {
   const [profiles, SetProfiles] = useState(profilesData);
 
   return (
-    <div className="login-page-container user-type-container relative">
-      <MobileSidebar link="/register/name" />
-
+    <div className="login-page-container relative">
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register/name" />
+      </div>
       <div className="login-container">
         <h1 className="login-header-title">Indiquez nous qui vous êtes !</h1>
         <h2 className="login-header-subtitle">
@@ -93,6 +101,7 @@ export const UserType = (props) => {
           <button className="btn btn-plain form-submit" type="submit">
             Suivant
           </button>
+          {error && <span className="error-message self-end pt-4">{error}</span>}
         </form>
       </div>
     </div>

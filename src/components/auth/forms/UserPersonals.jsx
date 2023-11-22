@@ -1,26 +1,48 @@
 import React from "react";
 import { useState } from "react";
-import { MobileSidebar } from "../layout/MobileSidebar";
+import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserPersonals = (props) => {
   const [pseudo, SetPseudo] = useState("");
   const [firstName, SetFirstName] = useState("");
   const [lastName, SetLastName] = useState("");
+  const [error, SetError] = useState({
+    pseudo: "",
+    firstName: "",
+    lastName: ""
+  });
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (pseudo === "") {
+      SetError({ ...error, pseudo: "Veuillez remplir ce champ" });
+      return;
+    }
+    if (firstName === "") {
+      SetError({ ...error, firstName: "Veuillez remplir ce champ" });
+      return;
+    }
+    if (lastName === "") {
+      SetError({ ...error, lastName: "Veuillez remplir ce champ" });
+      return;
+    }
+
     const user = {
       pseudo: pseudo,
       firstName: firstName,
       lastName: lastName
     };
 
-    event.preventDefault();
     props.updatePersonals(user);
   };
 
   return (
     <div className="login-page-container relative">
-      <MobileSidebar link="/register" />
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register" />
+      </div>
+
       <div className="login-container">
         <h1 className="login-header-title">Renseigner vos informations</h1>
         <h2 className="login-header-subtitle">
@@ -39,6 +61,7 @@ export const UserPersonals = (props) => {
                 SetPseudo(e.target.value);
               }}
             />
+            {error.pseudo && <span className="error-message">{error.pseudo}</span>}
           </div>
 
           <div className="form-input-container form-input-container-regular">
@@ -53,6 +76,7 @@ export const UserPersonals = (props) => {
                 SetFirstName(e.target.value);
               }}
             />
+            {error.firstName && <span className="error-message">{error.firstName}</span>}
           </div>
 
           <div className="form-input-container form-input-container-regular">
@@ -67,6 +91,7 @@ export const UserPersonals = (props) => {
                 SetLastName(e.target.value);
               }}
             />
+            {error.lastName && <span className="error-message">{error.lastName}</span>}
           </div>
 
           <button className="btn btn-plain form-submit" type="submit">

@@ -16,6 +16,13 @@
 @use 'components/auth/userNames';
 @use 'components/auth/userTraits';
 
+//MOCK
+@use 'components/Mock/ComingSoon.scss';
+@use 'components/Mock/Post';
+@use 'components/Mock/NewsPage';
+@use 'components/layout/InternalSideBar';
+@use 'components/Mock/Account.scss';
+
 /* 4 - pages */
 
 @use 'pages/home';
