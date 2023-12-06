@@ -3,7 +3,7 @@ import { Post } from "./Post";
 export const News = () => {
   const EmptyPost = {
     Name: "Mathis",
-    FamilyName: "SIlotia",
+    FamilyName: "Silotia",
     NeuroBalises: [],
     Likes: 0,
     text: "",
@@ -26,15 +26,29 @@ export const News = () => {
     }
   ];
 
+  const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
+
   return (
     <>
       <section className="NewsPage-section">
         <div className="NewsPage-Right-MSG">
-          <h1>Première Version</h1>
-          <p>
-            Ceci est une première version de notre application. De nouvelles fonctionnalités
-            arrivent très prochainement !
-          </p>
+          <div className="NewsPage-Warning">
+            <h1>Avertissement</h1>
+            <p>
+              L’autodiagnostic peut être dangereux. Si vous suspectez une pathologie / un trouble,
+              consultez un professionnel de santé en mesure de fournir un diagnostic fiable.
+            </p>
+          </div>
+          <div className="Hashtag-Container">
+            <h2>Top Hashtag</h2>
+            <div className="Hashtag-List">
+              {TopHashtag.map((e) => (
+                <p className="Hashtag-Item" key={e}>
+                  {e}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
         <Post PostInfo={EmptyPost} empty={true}></Post>
         <Post PostInfo={PostExemple[0]}></Post>

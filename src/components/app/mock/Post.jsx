@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
-import like from "../../../assets/icons/like.svg";
 import Account from "../../../assets/icons/account.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+import { faComment as farComment } from "@fortawesome/free-regular-svg-icons";
+import { faShareFromSquare as farShareFromSquare } from "@fortawesome/free-regular-svg-icons";
 
 export const Post = (props) => {
   const listItems = props.PostInfo.NeuroBalises.map(
@@ -28,8 +31,19 @@ export const Post = (props) => {
       ) : (
         <>
           <p className="Post-text">{props.PostInfo.text}</p>
-          <div className="Post-like">
-            <img src={like} alt="boutton j'aime" /> <p>{props.PostInfo.Likes}</p>
+          <div className="Post-interaction">
+            <div className="Post-like">
+              <FontAwesomeIcon icon={farHeart} />
+              <p>{props.PostInfo.Likes}</p>
+            </div>
+            <div className="Post-comment">
+              <FontAwesomeIcon icon={farComment} />
+              <p>Commenter</p>
+            </div>
+            <div className="Post-share">
+              <FontAwesomeIcon icon={farShareFromSquare} />
+              <p>Partager</p>
+            </div>
           </div>
         </>
       )}

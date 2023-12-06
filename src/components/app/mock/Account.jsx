@@ -2,7 +2,7 @@ import AccountImg from "../../../assets/icons/account.svg";
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
 import "../../../assets/scss/pages/_Account.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faUser as farUsers } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
 
 export const Account = () => {
@@ -56,7 +56,7 @@ export const Account = () => {
       </div>
       <div className="Account-sub">
         <div className="Follow">
-          <FontAwesomeIcon icon={faUsers} />
+          <FontAwesomeIcon icon={farUsers} />
           <p className="Follow-text">
             {user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s
           </p>
