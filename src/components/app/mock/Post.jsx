@@ -3,6 +3,7 @@ import Image from "../../../assets/icons/Ellipse-temp1.svg";
 import Account from "../../../assets/icons/account.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+//import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faComment as farComment } from "@fortawesome/free-regular-svg-icons";
 import { faShareFromSquare as farShareFromSquare } from "@fortawesome/free-regular-svg-icons";
 
@@ -15,6 +16,19 @@ export const Post = (props) => {
     )
     //todo : extracte the data from the textarea
   );
+  const switchLike = () => {
+    const likeButton = document.getElementById("like-button");
+    console.log(likeButton);
+    //var classe = likeButton.getClassList().First();
+    console.log(likeButton.getClassList);
+    // if (classe === "svg-inline--fa fa-heart") {
+    //   likeButton.getClassList().remove("svg-inline--fa fa-heart");
+    //   likeButton.getClassList().add("svg-solide--fa fa-heart");
+    // } else {
+    //   likeButton.icon == farHeart;
+    // }
+  };
+
   return (
     <div className="Post">
       <div className="Post-Header">
@@ -32,8 +46,8 @@ export const Post = (props) => {
         <>
           <p className="Post-text">{props.PostInfo.text}</p>
           <div className="Post-interaction">
-            <div className="Post-like">
-              <FontAwesomeIcon icon={farHeart} />
+            <div className="Post-like" onClick={switchLike}>
+              <FontAwesomeIcon id="like-button" icon={farHeart} />
               <p>{props.PostInfo.Likes}</p>
             </div>
             <div className="Post-comment">

@@ -22,11 +22,13 @@ export const Account = () => {
         }
       });
       const data = await response.json();
+      console.log("data received");
       setUser(data);
     };
     getUser();
   }, []);
   console.log(user);
+  console.log(Object.keys(user).length);
   // const listItems = user.traits.map(
   //   (e) => (
   //     <p className="Post-Header-AsdList-Item2" key={e}>
@@ -36,7 +38,7 @@ export const Account = () => {
   //   //todo : extracte the data from the textarea
   // );
 
-  // const listItems2 = user.Interests.map((e) => (
+  // const listItems2 = user.interests.map((e) => (
   //   <p className="Post-Header-AsdList-Item2" key={e}>
   //     {e}
   //   </p>
@@ -47,23 +49,31 @@ export const Account = () => {
       <div className="Account-Header">
         <img src={user.empty ? AccountImg : Image} alt="" className="Account-Image" />
         <div>
-          <p className="Account-Header-Names">
-            {user.Name} {user.FamilyName}
-          </p>
+          <p className="Account-Header-Names">{user.username}</p>
           {/* <div className="Tag-traits">{listItems}</div> */}
         </div>
         <button className="ModifyProfile">Modifier le profile</button>
       </div>
       <div className="Account-sub">
-        <div className="Follow">
-          <FontAwesomeIcon icon={farUsers} />
-          <p className="Follow-text">
-            {user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s
-          </p>
-        </div>
-        <div className="InterestCenter">
-          <p className="InterestCenter-Title">Centre d&apos;intérêt</p>
-          {/* <div className="InterestCenter-List">{listItems2}</div> */}
+        {Object.keys(user).length !== 0 && (
+          <div className="Follow">
+            <FontAwesomeIcon icon={farUsers} />
+            <p className="Follow-text">
+              {user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s
+            </p>
+          </div>
+        )}
+        <div className="header-Bio">
+          <div className="Bio">
+            <p className="Bio-Title">Bio</p>
+            <p className="Bio-text">{user.biography}</p>
+          </div>
+          {Object.keys(user).length !== 0 && (
+            <div className="Interest">
+              <p className="Interest-Title">Centre d&apos;intérêt</p>
+              {/* <div className="Interest-List">{listItems2}</div> */}
+            </div>
+          )}
         </div>
         <div className="Activities">
           <div className="Menu">

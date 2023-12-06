@@ -1,9 +1,29 @@
 import React from "react";
 import { Post } from "./Post";
+import { useEffect, useState } from "react";
 export const News = () => {
+  const [user, setUser] = useState({});
+  const tokenCookie = document.cookie.split("; ")[0];
+  console.log(tokenCookie);
+  useEffect(() => {
+    console.log("entered useeffect");
+    const getUser = async () => {
+      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/me", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenCookie}`
+        }
+      });
+      const data = await response.json();
+      setUser(data);
+    };
+    getUser();
+  }, []);
+  console.log(user);
   const EmptyPost = {
-    Name: "Mathis",
-    FamilyName: "Silotia",
+    Name: user.Name,
+    FamilyName: user.FamilyName,
     NeuroBalises: [],
     Likes: 0,
     text: "",

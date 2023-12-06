@@ -59,8 +59,35 @@
     gap: 0.5vh;
 }
 
+.header-Bio{
+    display: flex;
+    flex-direction: column;
+}
 
-.InterestCenter{
+.Bio{
+    border: 4px solid #86AAFD;
+    border-radius: 10px;
+    min-height: 3vw;
+    width: 18vw;
+    margin-top: 20vh;
+}
+
+.Bio-Title{
+    text-align: center;
+    font-family: 'Luciole';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.Bio-text{
+    padding: 0.4vw;
+    font-size: 15px;
+}
+
+
+.Interest{
     border: 4px solid #86AAFD;
     border-radius: 10px;
     height: fit-content;
@@ -68,14 +95,14 @@
     margin-top: 20vh;
 }
 
-.InterestCenter-List{
+.Interest-List{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 
-.InterestCenter-Title {
+.Interest-Title {
     text-align: center;
     font-family: 'Luciole';
     font-style: normal;
