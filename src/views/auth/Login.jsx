@@ -8,7 +8,7 @@ export const Login = () => {
 
   const handleSubmit = async (email, password) => {
     try {
-      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/login", {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -32,9 +32,8 @@ export const Login = () => {
         const expirationTime = new Date();
         expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
 
-        document.cookie = `${
-          data.token
-        }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;
+        document.cookie = `${data.token
+          }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;
         document.cookie = `tokenExpiration=${expirationTime.toUTCString()}; Secure; SameSite=None`;
         navigate("/app");
       } else {

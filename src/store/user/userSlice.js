@@ -16,7 +16,7 @@ export const userSlice = createSlice({
   reducers: {
     registerAccount: (state, action) => {
       console.log("createAccount", action.payload);
-      fetch("https://naappapirec.azurewebsites.net/api/Auth/register", {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(action.payload)
