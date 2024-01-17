@@ -1,51 +1,63 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { registerAccountAsync } from "../../../store/user/userSlice";
-import { useNavigate } from "react-router-dom";
-import {MobileSidebar} from "../layout/MobileSidebar";
+import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserBio = (props) => {
-  const [biography, SetBio] = useState("");
-  const { email, password, username, firstname, lastname, type } = useSelector(
-    (state) => state.user
-  );
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [Bio, SetBio] = useState("");
+  const [error, SetError] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const userData = { email, password, username, firstname, lastname, type, biography };
-    const result = await dispatch(registerAccountAsync(userData));
-    if (result.meta.requestStatus === "fulfilled") {
-      navigate("/");
+
+    if (Bio === "") {
+      SetError("Veuillez remplir ce champ");
+      return;
     }
+    const user = {
+      Bio: Bio
+    };
+    props.updateBio(user);
+  };
+
+  const handleSkip = (event) => {
+    const user = {
+      Bio: ""
+    };
+    event.preventDefault();
+    props.updateBio(user);
   };
 
   return (
     <div className="login-page-container relative">
-      <MobileSidebar link="/" />
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register/type" />
+      </div>
 
       <div className="login-container">
-        <h1 className="login-header-subtitle">Dites nous en plus sur vous</h1>
+        <h1 className="login-header-title">Racontez nous qui vous êtes...</h1>
+        <h2 className="login-header-subtitle self-start">
+          Ce texte apparaitra dans la rubrique “Qui suis-je” sur votre profil.
+        </h2>
+        <form className="w-full" onSubmit={handleSubmit}>
+          <textarea
+            placeholder="200 caractères maximum"
+            className="Bio-Text-box rounded-2xl w-full text-base mb-8"
+            onChange={(e) => {
+              SetBio(e.target.value);
+            }}
+          />
+          {error && <span className="error-message">{error}</span>}
 
-        <form className="form-container" onSubmit={handleSubmit}>
-          <div className="form-input-container  form-input-container-regular">
-            <textarea
-              placeholder="écriver votre biographie"
-              className="Bio-Text-box"
-              onChange={(e) => {
-                SetBio(e.target.value);
-              }}
-            />
+          <div className="flex justify-end">
+            <div>
+              <button className="btn btn-plain form-submit mb-4" type="submit">
+                Suivant
+              </button>
+              <button className="text-gray-400 underline" type="submit" onClick={handleSkip}>
+                Passer cette étape
+              </button>
+            </div>
           </div>
-
-          <button className="btn btn-plain form-submit" type="submit">
-            Suivant
-          </button>
-          <button className="Bio-ignore-font" type="submit" onClick={() => props.BioPage("")}>
-            Ignorer
-          </button>
         </form>
       </div>
     </div>

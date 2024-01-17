@@ -1,29 +1,48 @@
 import React from "react";
 import { useState } from "react";
-import { MobileSidebar } from "../layout/MobileSidebar";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../../store/user/userSlice";
+import { ReturnButton } from "../../UI/ReturnButton";
 
-export const UserPersonals = () => {
-  const [username, Setusername] = useState("");
-  const [firstname, SetFirstName] = useState("");
-  const [lastname, SetLastName] = useState("");
-  const dispatch = useDispatch();
-  let navigate = useNavigate();
-  const { email, password } = useSelector((state) => state.user);
+export const UserPersonals = (props) => {
+  const [pseudo, SetPseudo] = useState("");
+  const [firstName, SetFirstName] = useState("");
+  const [lastName, SetLastName] = useState("");
+  const [error, SetError] = useState({
+    pseudo: "",
+    firstName: "",
+    lastName: ""
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateUser({ email, password, username, firstname, lastname }));
-    navigate("/register/type");
 
-    //props.updatePersonals(user);
+    if (pseudo === "") {
+      SetError({ ...error, pseudo: "Veuillez remplir ce champ" });
+      return;
+    }
+    if (firstName === "") {
+      SetError({ ...error, firstName: "Veuillez remplir ce champ" });
+      return;
+    }
+    if (lastName === "") {
+      SetError({ ...error, lastName: "Veuillez remplir ce champ" });
+      return;
+    }
+
+    const user = {
+      pseudo: pseudo,
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    props.updatePersonals(user);
   };
 
   return (
     <div className="login-page-container relative">
-      <MobileSidebar link="/register" />
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register" />
+      </div>
+
       <div className="login-container">
         <h1 className="login-header-title">Renseigner vos informations</h1>
         <h2 className="login-header-subtitle">
@@ -39,9 +58,10 @@ export const UserPersonals = () => {
               placeholder="Entrer votre Pseudo"
               className="form-input form-input-email form-input-regular"
               onChange={(e) => {
-                Setusername(e.target.value);
+                SetPseudo(e.target.value);
               }}
             />
+            {error.pseudo && <span className="error-message">{error.pseudo}</span>}
           </div>
 
           <div className="form-input-container form-input-container-regular">
@@ -56,6 +76,7 @@ export const UserPersonals = () => {
                 SetFirstName(e.target.value);
               }}
             />
+            {error.firstName && <span className="error-message">{error.firstName}</span>}
           </div>
 
           <div className="form-input-container form-input-container-regular">
@@ -70,6 +91,7 @@ export const UserPersonals = () => {
                 SetLastName(e.target.value);
               }}
             />
+            {error.lastName && <span className="error-message">{error.lastName}</span>}
           </div>
 
           <button className="btn btn-plain form-submit" type="submit">

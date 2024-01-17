@@ -4,22 +4,17 @@ import { useNavigate } from "react-router-dom";
 import EmailImg from "../../../assets/icons/mail.svg";
 import Password from "../../../assets/icons/password.svg";
 import Eye from "../../../assets/icons/eye.svg";
-import { MobileSidebar } from "../layout/MobileSidebar";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../../store/user/userSlice";
 
 export const RegisterForm = (props) => {
-  const [password, SetPassword] = useState("");
+  const [passWord, SetPassword] = useState("");
   const [checkPassword, SetCheckPassword] = useState("");
   const [email, SetEmail] = useState("");
   const [isPlainPassword, SetIsPlainPassword] = useState(false);
   let navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateUser({ email, password, checkPassword }));
-    navigate("/register/name");
+    props.createAccount(email, passWord, checkPassword);
   };
 
   return (
