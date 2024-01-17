@@ -24,6 +24,7 @@ export const RegisterForm = (props) => {
 
   return (
     <div className="login-page-container Email-MDP-flex-column">
+      <MobileSidebar link="/" />
       <div className="login-container">
         <h1 className="login-header-title">Inscrivez - vous !</h1>
         <h2 className="login-header-subtitle">

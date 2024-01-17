@@ -18,16 +18,6 @@
     @include mixins.breakpoint-up('medium') {
         flex-basis: 40%;
     }
-
-    &--home {
-        background: hsla(222, 97%, 76%, 1);
-        background: linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
-        background: -moz-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
-        background: -webkit-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
-        height: 100vh;
-        padding: 0 50px;
-        display: flex;
-    }
 }
 
 .sidebar input[type="checkbox"] {
@@ -41,8 +31,77 @@
     justify-content: center;
 }
 
+.sidebar-container-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .sidebar-logo {
     width: 200px;
+}
+
+.return-logo {
+    position: relative;
+    right: 70px;
+    width: 45px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.return-text {
+    position: relative;
+    right: 70px;
+}
+
+.main-logo {
+    width: 105px;
+}
+
+.info-logo {
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #B87FE5;
+    border: 2px solid #B87FE5;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 45px;
+    right: 20px;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
+}
+
+.circle p {
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+.return-container {
+    text-align: center;
+}
+
+.login-logo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .sidebar-subtitle {
@@ -142,7 +201,7 @@
         color: gray;
     }
 
-    .sidebar #show-menu:checked~.sidebar-menu-icon i::before {
+    .sidebar #show-menu:checked ~ .sidebar-menu-icon i::before {
         transition: all 0.3s ease;
         font-size: xx-large;
         content: "\f00d";
@@ -164,7 +223,57 @@
         z-index: 1;
     }
 
-    .sidebar #show-menu:checked~.sidebar-content {
+    .sidebar #show-menu:checked ~ .sidebar-content {
         left: 0;
+    }
+    .sidebar-popup.active ~ .sidebar-content {
+        left: 0;
+    }
+}
+
+@include mixins.breakpoint-down('small') {
+    .sidebar-popup {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+        border-radius: 1%;
+        background-color: white;
+        z-index: 1000;
+        transition: right 2s;
+        overflow-y: auto;
+    }
+
+    .sidebar-popup.active {
+        right: 0;
+    }
+
+    .sidebar-popup .sidebar-content {
+        width: 100%;
+        height: 100%;
+        text-justify: auto;
+        margin-right: 50%;
+        padding: 10%;
+        transition: all 0.3s ease;
+        left: 5%;
+    }
+    .sidebar-popup .sidebar-container {
+        text-align: justify;
+    }
+    .close-button {
+        z-index: 1000;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid black;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 120px;
+        background-color: transparent;
     }
 }

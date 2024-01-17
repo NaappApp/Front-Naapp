@@ -27,7 +27,8 @@ export const UserBio = (props) => {
       <MobileSidebar link="/" />
 
       <div className="login-container">
-        <h1 className="login-header-subtitle">Dites nous en plus sur vous</h1>
+        <h1 className="login-header-title">Racontez nous qui vous êtes...</h1>
+        <h1 className="login-header-subtitle">Ce texte apparaitra dans la rubrique “Qui suis-je” sur votre profil.</h1>
 
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-input-container  form-input-container-regular">
