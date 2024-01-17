@@ -14,7 +14,14 @@
 .Bio-Text-box:focus {
     border: colors.$primary 5px solid;
 }
-
+@media screen and (max-width: 767px) {
+    .Bio-Text-box {
+        position: relative;
+        min-height: 10em;
+        min-width: 20em;
+        right: 60px;
+    }
+}
 .LeftMargin-Button35 {
     margin-left: 35em;
 }

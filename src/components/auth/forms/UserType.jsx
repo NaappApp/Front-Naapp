@@ -2,36 +2,41 @@ import React from "react";
 import { useState } from "react";
 import Chevron from "../../../assets/icons/chevron-right.svg";
 import { MobileSidebar } from "../layout/MobileSidebar";
+//import {registerAccountAsync, updateUser} from "../../../store/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {updateUser} from "../../../store/user/userSlice";
 
-export const UserType = (props) => {
-  const [role, SetRole] = useState("");
+export const UserType = () => {
+  const [type, Settype] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { email, password, username, firstname, lastname } = useSelector((state) => state.user);
   const handleSubmit = (event) => {
-    console.log();
-    const user = {
-      role: role
-    };
-
     event.preventDefault();
-    props.updateType(user);
+    dispatch(updateUser({ email, password, username, firstname, lastname, type }));
+    navigate("/register/Bio");
+
+    //props.updatePersonals(user);
   };
 
   const profilesData = [
     {
-      name: "neuroatypical",
+      name: "atypical",
       title: "Neuroatypique / Proche d’un.e neuroatypique",
       description:
         "Je suis concerné.e par la neuroatypie directement et/ou c’est le cas de quelqu’un dans mon entourage",
       isSelected: false
     },
     {
-      name: "curious",
+      name: "regular",
       title: "Je suis curieux.se / Je m’informe",
       description:
         "Je ne suis pas directement concerné.e par le sujet mais je souhaite en apprendre plus",
       isSelected: false
     },
     {
-      name: "profesional",
+      name: "professional",
       title: "Professionel.le de santé",
       description:
         "Je suis familier/familière avec le sujet grâce à mon métier et je suis apte à délivrer des informations sûres ",
@@ -71,7 +76,7 @@ export const UserType = (props) => {
                   value={profile.name}
                   className="form-input-radio hidden"
                   onChange={(e) => {
-                    SetRole(e.target.value);
+                    Settype(e.target.value);
                     // Set the selected profile as selected and other as not selected
                     SetProfiles(
                       profiles.map((profile) => {

@@ -134,7 +134,6 @@
     align-items: center;
     justify-content: center;
     align-self: flex-end;
-    width: 30%;
 }
 
 .form-missing {
@@ -143,4 +142,126 @@
 .login-invisible-button{
     border: transparent;
     background-color: transparent;
+}
+.search {
+    display: inline-flex;
+    padding: 8px 30px 8px 20px;
+    gap: 12px;
+
+}
+
+@media (max-width: 600px) {
+    .search {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+}
+.searchField {
+    width: 40%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #E4E4E4;
+}
+
+@media (max-width: 600px) {
+    .searchField {
+        width: 80%;
+    }
+}
+.searchButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+@media (max-width: 600px) {
+    .searchButton {
+        position: relative;
+        margin-top: 10px;
+    }
+}
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+ul li {
+    position: relative;
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #E4E4E4;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+@media (max-width: 600px) {
+    ul li {
+        flex: 0 0 calc(53.33% - 20px);
+        padding: 5px;
+
+        width: 380px;
+        height: 120px;
+    }
+}
+ul li img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+ul li span {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* Ajoutez ces styles à votre fichier CSS existant */
+
+ul.categories li {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+ul.categories li:hover {
+    background-color: #ddd; /* Style pour l'effet hover */
+}
+
+ul.categories li.selected {
+    background-color: #007bff; /* Couleur pour les éléments sélectionnés */
+    color: #fff; /* Couleur du texte pour les éléments sélectionnés */
+    border: 2px solid #0056b3; /* Bordure pour les éléments sélectionnés */
+}
+
+ul.categories li.selected img {
+    filter: brightness(1.2); /* Augmenter la luminosité de l'image pour les éléments sélectionnés */
+}
+.form-container-follow {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.div1 { grid-area: 1 / 1 / 2 / 2; }
+.div2 { grid-area: 1 / 2 / 2 / 2; }
+.div3 { grid-area: 1 / 3 / 3 / 4; }
+
+@media (max-width: 600px) {
+    .profile {
+        width: 60%;
+    }
 }

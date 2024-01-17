@@ -1,21 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { MobileSidebar } from "../layout/MobileSidebar";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../store/user/userSlice";
 
-export const UserPersonals = (props) => {
-  const [pseudo, SetPseudo] = useState("");
-  const [firstName, SetFirstName] = useState("");
-  const [lastName, SetLastName] = useState("");
+export const UserPersonals = () => {
+  const [username, Setusername] = useState("");
+  const [firstname, SetFirstName] = useState("");
+  const [lastname, SetLastName] = useState("");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  const { email, password } = useSelector((state) => state.user);
 
   const handleSubmit = (event) => {
-    const user = {
-      pseudo: pseudo,
-      firstName: firstName,
-      lastName: lastName
-    };
-
     event.preventDefault();
-    props.updatePersonals(user);
+    dispatch(updateUser({ email, password, username, firstname, lastname }));
+    navigate("/register/type");
+
+    //props.updatePersonals(user);
   };
 
   return (
@@ -36,7 +39,7 @@ export const UserPersonals = (props) => {
               placeholder="Entrer votre Pseudo"
               className="form-input form-input-email form-input-regular"
               onChange={(e) => {
-                SetPseudo(e.target.value);
+                Setusername(e.target.value);
               }}
             />
           </div>
