@@ -1,6 +1,5 @@
 @use '../../variables/colors';
 @use '../../variables/fonts';
-@use '../../variables/mixins';
 
 .form-container {
     display: flex;
@@ -14,12 +13,12 @@
 .form-input-container {
     position: relative;
     margin-bottom: 45px;
-    width: 75%;
+    width: 100%;
 }
 
 .form-input-container--password {
     position: relative;
-    width: 75%;
+    width: 100%;
 }
 
 .form-input {
@@ -88,33 +87,8 @@
 }
 
 .form-input-checkbox {
-    -webkit-appearance: none;
-    appearance: none;
-    color: currentColor;
-    width: 16px;
-    height: 16px;
-    border: 3px solid colors.$secondary;
-    border-radius: 0.15em;
-    margin-right: 4px;
-    transform: translateY(2px);
-    &:before {
-        content: "";
-        display: block;
-        width: 11px;
-        height: 11px;
-        transform: scale(0);
-        background-color: colors.$secondary;
-        transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em colors.$secondary;
-        transform-origin: bottom left;
-        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    }
-}
-
-.form-input-checkbox:checked {
-    &:before{
-        transform: scale(1); 
-    }
+    margin: 0;
+    margin-right: 5px;
 }
 
 .form-label-checkbox {
@@ -138,6 +112,7 @@
 
 .form-missing {
     padding-top: 15px;
+    cursor: pointer;
 }
 .login-invisible-button{
     border: transparent;

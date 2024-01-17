@@ -3,8 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home";
 import { Login } from "./views/auth/Login";
 import { Register } from "./views/auth/Register";
-import { Dashboard } from "./views/app/Dashboard";
 import { Profile } from "./views/app/Profile";
+import { NewsPage } from "./views/app/NewsPage";
+import { Events } from "./views/app/Events";
+import { Parameters } from "./views/app/Parameters";
+import { Tips } from "./views/app/Tips";
+import { Accounts } from "./views/app/Account";
 import { Type } from "./views/auth/authPathway/Type";
 import { Name } from "./views/auth/authPathway/Name";
 import { Bio } from "./views/auth/authPathway/Bio";
@@ -25,9 +29,15 @@ export const App = () => {
           <Route index={true} element={<Home />} />
 
           {/* App */}
-          <Route path="app" element={<Dashboard />}>
+          <Route path="app" element={<NewsPage />}>
             <Route path="profile" element={<Profile />} />
           </Route>
+          <Route path="/account" element={<Accounts />} />
+
+          {/* Mock Demo */}
+          <Route path="/Events" element={<Events />} />
+          <Route path="/tips" element={<Tips />} />
+          <Route path="/settings" element={<Parameters />} />
 
           {/* Auth */}
           <Route path="login" element={<Login />} />

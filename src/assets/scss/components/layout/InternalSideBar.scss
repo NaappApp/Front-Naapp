@@ -1,0 +1,118 @@
+@use '../../variables/colors';
+@use '../../variables/fonts';
+@use '../../variables/mixins';
+
+
+.sidebar-In {
+    background: hsla(222, 97%, 76%, 1);
+    background: linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
+    height: 100vh;
+    width: 20vw;
+    padding: 0 50px;
+    display: flex;
+
+}
+
+.sidebar-In-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-In-logo {
+    width: 200px;
+}
+
+.sidebar-In-subtitle {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.sidebar-In-text {
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 1.35;
+    margin-bottom: 5px;
+}
+
+.sidebar-In-text-par {
+    margin-top: 2vh;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.sidebar-In-reseaux {
+    margin-bottom: 10px;
+}
+
+.sidebar-In-footer {
+    color: #000000;
+    margin-top: 10px;
+    padding-bottom: 30px;
+
+    &-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &-link {
+        position: relative;
+        padding-bottom: 10px;
+        font-weight: 700;
+        font-size: 10px;
+        transition: color 0.25s ease-in-out;
+
+        &:hover {
+            color: white !important;
+
+            span {
+                color: #000 !important;
+            }
+        }
+
+        &:visited {
+            color: #000000;
+        }
+    }
+}
+
+.sidebar-In-spacing {
+    margin: 0 5px;
+}
+
+.sidebar-In-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-In-logoImg {
+    margin: 10px 5px;
+}
+
+.sidebar-In-menu-icon {
+    color: #fff;
+    font-size: xx-large;
+    cursor: pointer;
+    display: none;
+
+}
+
+.sidebar-In-p-container > p {
+    margin-top : 2vh;
+    font-size : 16px;
+    cursor: pointer;
+}
+
+.sidebar-In-p-container > p:hover {
+    text-decoration: underline;
+}
