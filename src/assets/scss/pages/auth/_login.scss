@@ -1,3 +1,6 @@
+@use '../../variables/mixins';
+
+
 .login-form {
     display: flex;
     align-items: center;
@@ -5,7 +8,7 @@
 }
 
 .login-page-container {
-    width: 100%;
+    max-width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,11 +17,22 @@
     padding: 0 250px;
 }
 
+.register-page-container {
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    width: 90%;
 }
 
 .login-header-title {
@@ -31,8 +45,31 @@
     font-size: 16px;
     margin-bottom: 30px;
     line-height: 1.4;
+    background-color: inherit;
 }
 
 .login-register {
     padding-top: 90px;
+}
+
+@media screen and (max-width: 767px){
+    .login-page-container {
+        height: 80vh;
+        padding: 0 40px;
+    }
+    .register-page-container {
+        height: 95vh;
+        padding: 0 10px;
+    }
+    .login-register {
+        padding-top: 5px;
+    }
+    .user-type-container {
+        height: 100vh;
+    }
+    .login-container {
+    }
+    .login-header-title {
+        margin-top: 170px;
+    }
 }

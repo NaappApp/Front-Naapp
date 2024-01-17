@@ -10,7 +10,7 @@ export const Name = () => {
   const navigate = useNavigate();
 
   const updatePersonals = (user) => {
-    dispatch(updateUser(user));
+    dispatch(updateUser({ url: "/username", data: user }));
     navigate("/register/type");
   };
 

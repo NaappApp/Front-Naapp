@@ -3,20 +3,42 @@
 
 .Bio-Text-box {
     background-color: #E4E4E4;
-    font-size: 16px;
+    border: transparent solid;
+    margin-bottom: 40px;
+    min-width: 35em;
+    min-height: 15em;
+    font-size: 18px;
     resize: none;
-    transition: all 0.15s ease-in-out;
-    border: solid 3px transparent;
-    min-height: 30rem;
-    padding: 20px;
 }
 
 .Bio-Text-box:focus {
-    border: colors.$primary 3px solid;
-    outline: none;
+    border: colors.$primary 5px solid;
+}
+@media screen and (max-width: 767px) {
+    .Bio-Text-box {
+        position: relative;
+        min-height: 10em;
+        min-width: 20em;
+        right: 60px;
+    }
+}
+.LeftMargin-Button35 {
+    margin-left: 35em;
 }
 
-.Bio-Text-box:focus-visible {
-    border: colors.$primary 3px solid;
-    outline: none;
+.LeftMargin-Button18 {
+    margin-left: 18em;
+}
+
+.Bio-ignore-font {
+    margin-left: 44em;
+    border-color: transparent;
+    background-color: transparent;
+    font-family: 'Luciole';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #5C5C5C;
 }
