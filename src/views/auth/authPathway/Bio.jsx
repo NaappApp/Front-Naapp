@@ -1,32 +1,57 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../../components/auth/layout/Sidebar";
 import { UserBio } from "../../../components/auth/forms/UserBio";
-import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateUser } from "../../../store/user/userSlice";
 
 export const Bio = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { state } = useLocation();
-  console.log(state.DataForTheAccount.NeuroBalises);
-  const ReturnToPreviousPage = () => {
-    if (state.DataForTheAccount.Role !== "Curieux") {
-      navigate("/" + state.DataForTheAccount.Role, {
-        state: { DataForTheAccount: state.DataForTheAccount }
-      });
-    } else {
-      navigate("/type", { state: { DataForTheAccount: state.DataForTheAccount } });
+  //MOCK
+  const mock = [
+    {
+      Email: "galliez@y.com",
+      mdp: "ynov",
+      InterestCenter: ["Sport", "Cinéma", "Gastronomie", "Dessin/Art", "Nature"],
+      NeuroBalises: [],
+      Name: "Galliez",
+      FamilyName: "Loelia",
+      Role: "fatiguer",
+      Speudo: "",
+      Bio: "Bonjour je suis CEO de Naapp",
+      From: "",
+      Follower: 180,
+      Following: 260
+    },
+    {
+      Email: "noa@y.com",
+      mdp: "ynov",
+      InterestCenter: ["Sport", "Cinéma", "Gastronomie", "Dessin/Art", "Nature"],
+      NeuroBalises: ["Dysléxie", "Dyscalculie", "Dysphasie", "TDA"],
+      Name: "Noa",
+      FamilyName: "LeFaux",
+      Role: "NeuroAtypique",
+      Speudo: "",
+      Bio: "Bonjour je suis un dev web qui aime le code et les jeux video",
+      From: "",
+      Follower: 180,
+      Following: 260
     }
+  ];
+
+  const updateBio = (user) => {
+    dispatch(updateUser(user));
+    //navigate("/register/bio");
+
+    //MOCK
+    navigate("/MainInApp", { state: { Data: mock[0] } });
   };
-  const BioPage = (BioEntry) => {
-    //Todo check if the bio is ok with web rules
-    state.DataForTheAccount.Bio = BioEntry;
-    console.log(state.DataForTheAccount);
-    navigate("/redirected", { state: { DataForTheAccount: state.DataForTheAccount } });
-  };
+
   return (
     <div className="login-form">
       <Sidebar />
-      <UserBio BioPage={BioPage} ReturnToPreviousPage={ReturnToPreviousPage} />
+      <UserBio updateBio={updateBio} />
     </div>
   );
 };

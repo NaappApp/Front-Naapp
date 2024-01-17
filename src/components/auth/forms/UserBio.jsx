@@ -4,39 +4,62 @@ import { ReturnButton } from "../../UI/ReturnButton";
 
 export const UserBio = (props) => {
   const [Bio, SetBio] = useState("");
+  const [error, SetError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (Bio === "") {
+      SetError("Veuillez remplir ce champ");
+      return;
+    }
+    const user = {
+      Bio: Bio
+    };
+    props.updateBio(user);
+  };
+
+  const handleSkip = (event) => {
+    const user = {
+      Bio: ""
+    };
+    event.preventDefault();
+    props.updateBio(user);
+  };
 
   return (
-    <div className="forms-page-container">
-      <ReturnButton link="/type" />
+    <div className="login-page-container relative">
+      <div className="absolute top-20 left-20">
+        <ReturnButton link="/register/type" />
+      </div>
 
-      <div className="forms-container">
-        <h1 className="form-header-title">Dites nous en plus sur vous</h1>
-        <form className="login-form-container">
+      <div className="login-container">
+        <h1 className="login-header-title">Racontez nous qui vous êtes...</h1>
+        <h2 className="login-header-subtitle self-start">
+          Ce texte apparaitra dans la rubrique “Qui suis-je” sur votre profil.
+        </h2>
+        <form className="w-full" onSubmit={handleSubmit}>
           <textarea
-            placeholder="écriver votre biographie"
-            className="Bio-Text-box"
+            placeholder="200 caractères maximum"
+            className="Bio-Text-box rounded-2xl w-full text-base mb-8"
             onChange={(e) => {
               SetBio(e.target.value);
             }}
           />
+          {error && <span className="error-message">{error}</span>}
 
-          <button
-            className="login-form-submit LeftMargin-Button35"
-            type="submit"
-            onClick={() => props.BioPage(Bio)}>
-            Suivant
-          </button>
-          <button className="Bio-ignore-font" type="submit" onClick={() => props.BioPage("")}>
-            Ignorer
-          </button>
+          <div className="flex justify-end">
+            <div>
+              <button className="btn btn-plain form-submit mb-4" type="submit">
+                Suivant
+              </button>
+              <button className="text-gray-400 underline" type="submit" onClick={handleSkip}>
+                Passer cette étape
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   );
 };
-
-/*import { Biography } from '../components/Biography';
-   const BioPage = (BioEntry) => {
-        //Todo check if the bio is ok with web rules
-        DataForTheAccount.Bio = BioEntry
-    }*/

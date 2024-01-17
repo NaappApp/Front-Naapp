@@ -83,7 +83,9 @@ export const LoginForm = (props) => {
             type="button"
             onClick={() => {
               setError(null);
-              props.handleSubmit(mail, passWord, isRemembered).catch((err) => setError(err.message));
+              props
+                .handleSubmit(mail, passWord, isRemembered)
+                .catch((err) => setError(err.message));
             }}>
             Se connecter
           </button>
