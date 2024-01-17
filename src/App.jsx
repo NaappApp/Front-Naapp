@@ -12,11 +12,9 @@ import { Accounts } from "./views/app/Account";
 import { Type } from "./views/auth/authPathway/Type";
 import { Name } from "./views/auth/authPathway/Name";
 import { Bio } from "./views/auth/authPathway/Bio";
-import { Interets } from "./views/auth/authPathway/Interets";
 import { Legals } from "./views/miscellaneous/Legals";
 import { PrivacyPolicy } from "./views/miscellaneous/PrivacyPolicy";
 import { NotFound } from "./views/other/NotFound";
-import { Follow } from "./views/auth/authPathway/Follow";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
@@ -48,8 +46,8 @@ export const App = () => {
           <Route path="register/type" element={<Type />} />
           <Route path="register/bio" element={<Bio />} />
           {/* <Route path="personal" element={<Personal />} /> */}
-          {<Route path="register/interest" element={<Interets />} />}
-          { <Route path="register/following" element={<Follow />} />}
+          {/* <Route path="interest" element={<Interest />} /> */}
+          {/* <Route path="following" element={<Follow />} /> */}
 
           {/* Miscellaneous */}
           <Route path="legals" element={<Legals />} />
@@ -60,6 +58,7 @@ export const App = () => {
         </Routes>
       </BrowserRouter>
     </Provider>
+
     //</AuthContext.Provider>
   );
 };
