@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAccountAsync } from "../../../store/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import {MobileSidebar} from "../layout/MobileSidebar";
+import { MobileSidebar } from "../layout/MobileSidebar";
 
 export const UserBio = (props) => {
   const [biography, SetBio] = useState("");
@@ -27,18 +27,18 @@ export const UserBio = (props) => {
       <MobileSidebar link="/" />
 
       <div className="login-container">
-        <h1 className="login-header-title">Racontez nous qui vous êtes...</h1>
-        <h2 className="login-header-subtitle self-start">
-          Ce texte apparaitra dans la rubrique “Qui suis-je” sur votre profil.
-        </h2>
-        <form className="w-full" onSubmit={handleSubmit}>
-          <textarea
-            placeholder="200 caractères maximum"
-            className="Bio-Text-box rounded-2xl w-full text-base mb-8"
-            onChange={(e) => {
-              SetBio(e.target.value);
-            }}
-          />
+        <h1 className="login-header-subtitle">Dites nous en plus sur vous</h1>
+
+        <form className="form-container" onSubmit={handleSubmit}>
+          <div className="form-input-container  form-input-container-regular">
+            <textarea
+              placeholder="écriver votre biographie"
+              className="Bio-Text-box"
+              onChange={(e) => {
+                SetBio(e.target.value);
+              }}
+            />
+          </div>
 
           <button className="btn btn-plain form-submit" type="submit">
             Suivant

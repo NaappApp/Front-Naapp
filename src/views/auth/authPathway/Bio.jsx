@@ -1,11 +1,12 @@
 import React from "react";
 import { Sidebar } from "../../../components/auth/layout/Sidebar";
 import { UserBio } from "../../../components/auth/forms/UserBio";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { updateUser } from "../../../store/user/userSlice";
+//import { useDispatch } from "react-redux";
+//import { useNavigate } from "react-router-dom";
+//import { updateUser } from "../../../store/user/userSlice";
 
 export const Bio = () => {
+  /*
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //MOCK
@@ -39,7 +40,8 @@ export const Bio = () => {
       Following: 260
     }
   ];
-
+*/
+  /*
   const updateBio = (user) => {
     dispatch(updateUser(user));
     //navigate("/register/bio");
@@ -47,11 +49,11 @@ export const Bio = () => {
     //MOCK
     navigate("/MainInApp", { state: { Data: mock[0] } });
   };
-
+*/
   return (
     <div className="login-form">
       <Sidebar />
-      <UserBio updateBio={updateBio} />
+      <UserBio />
     </div>
   );
 };

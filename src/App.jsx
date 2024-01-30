@@ -16,6 +16,8 @@ import { Legals } from "./views/miscellaneous/Legals";
 import { PrivacyPolicy } from "./views/miscellaneous/PrivacyPolicy";
 import { NotFound } from "./views/other/NotFound";
 import { Provider } from "react-redux";
+import { Interets } from "./views/auth/authPathway/Interets";
+import { Follow } from "./views/auth/authPathway/Follow";
 import store from "./store/store";
 
 export const App = () => {
@@ -46,8 +48,8 @@ export const App = () => {
           <Route path="register/type" element={<Type />} />
           <Route path="register/bio" element={<Bio />} />
           {/* <Route path="personal" element={<Personal />} /> */}
-          {/* <Route path="interest" element={<Interest />} /> */}
-          {/* <Route path="following" element={<Follow />} /> */}
+          <Route path="register/interest" element={<Interets />} />
+          <Route path="register/following" element={<Follow />} />
 
           {/* Miscellaneous */}
           <Route path="legals" element={<Legals />} />
