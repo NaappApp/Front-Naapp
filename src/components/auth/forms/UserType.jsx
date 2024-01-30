@@ -1,44 +1,42 @@
 import React from "react";
 import { useState } from "react";
-import { ReturnButton } from "../../UI/ReturnButton";
 import Chevron from "../../../assets/icons/chevron-right.svg";
+import { MobileSidebar } from "../layout/MobileSidebar";
+//import {registerAccountAsync, updateUser} from "../../../store/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateUser } from "../../../store/user/userSlice";
 
-export const UserType = (props) => {
-  const [role, SetRole] = useState("");
-  const [error, SetError] = useState("");
-
+export const UserType = () => {
+  const [type, Settype] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { email, password, username, firstname, lastname } = useSelector((state) => state.user);
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(updateUser({ email, password, username, firstname, lastname, type }));
+    navigate("/register/Bio");
 
-    if (role === "") {
-      SetError("Veuillez sélectionner un profil");
-      return;
-    }
-
-    const user = {
-      role: role
-    };
-
-    props.updateType(user);
+    //props.updatePersonals(user);
   };
 
   const profilesData = [
     {
-      name: "neuroatypical",
+      name: "atypical",
       title: "Neuroatypique / Proche d’un.e neuroatypique",
       description:
         "Je suis concerné.e par la neuroatypie directement et/ou c’est le cas de quelqu’un dans mon entourage",
       isSelected: false
     },
     {
-      name: "curious",
+      name: "regular",
       title: "Je suis curieux.se / Je m’informe",
       description:
         "Je ne suis pas directement concerné.e par le sujet mais je souhaite en apprendre plus",
       isSelected: false
     },
     {
-      name: "profesional",
+      name: "professional",
       title: "Professionel.le de santé",
       description:
         "Je suis familier/familière avec le sujet grâce à mon métier et je suis apte à délivrer des informations sûres ",
@@ -49,10 +47,9 @@ export const UserType = (props) => {
   const [profiles, SetProfiles] = useState(profilesData);
 
   return (
-    <div className="login-page-container relative">
-      <div className="absolute top-20 left-20">
-        <ReturnButton link="/register/name" />
-      </div>
+    <div className="login-page-container user-type-container relative">
+      <MobileSidebar link="/register/name" />
+
       <div className="login-container">
         <h1 className="login-header-title">Indiquez nous qui vous êtes !</h1>
         <h2 className="login-header-subtitle">
@@ -79,7 +76,7 @@ export const UserType = (props) => {
                   value={profile.name}
                   className="form-input-radio hidden"
                   onChange={(e) => {
-                    SetRole(e.target.value);
+                    Settype(e.target.value);
                     // Set the selected profile as selected and other as not selected
                     SetProfiles(
                       profiles.map((profile) => {
@@ -101,7 +98,6 @@ export const UserType = (props) => {
           <button className="btn btn-plain form-submit" type="submit">
             Suivant
           </button>
-          {error && <span className="error-message self-end pt-4">{error}</span>}
         </form>
       </div>
     </div>
