@@ -49,7 +49,9 @@ export const UserInterets = () => {
                 <li
                   key={interet.id}
                   onClick={() => toggleSelection(interet.id)}
-                  className={selectedInterets.includes(interet.id) ? "selected" : ""}>
+                  className={
+                    selectedInterets.includes(interet.id) ? "interest selected" : "interest"
+                  }>
                   <label>
                     <img
                       src={interet.image}
