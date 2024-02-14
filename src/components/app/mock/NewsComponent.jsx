@@ -8,7 +8,7 @@ export const News = () => {
   useEffect(() => {
     console.log("entered useeffect");
     const getUser = async () => {
-      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/me", {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
