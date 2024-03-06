@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home";
 import { Login } from "./views/auth/Login";
 import { Register } from "./views/auth/Register";
-import { Profile } from "./views/app/Profile";
 import { NewsPage } from "./views/app/NewsPage";
 import { Events } from "./views/app/Events";
 import { Parameters } from "./views/app/Parameters";
@@ -30,14 +29,12 @@ export const App = () => {
 
           {/* App */}
           <Route path="app" element={<NewsPage />}>
-            <Route path="profile" element={<Profile />} />
+            <Route path="account" element={<Accounts />} />
+            <Route path="event" element={<Events />} />
+            <Route path="resources" element={<Tips />} />
+            <Route path="messages" element={<NotFound />} /> {/* TODO  NOt Found for Now*/}
+            <Route path="settings" element={<Parameters />} />
           </Route>
-          <Route path="/account" element={<Accounts />} />
-
-          {/* Mock Demo */}
-          <Route path="/Events" element={<Events />} />
-          <Route path="/tips" element={<Tips />} />
-          <Route path="/settings" element={<Parameters />} />
 
           {/* Auth */}
           <Route path="login" element={<Login />} />
