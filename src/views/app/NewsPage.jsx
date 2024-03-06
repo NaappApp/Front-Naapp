@@ -6,7 +6,9 @@ import { Header } from "../../components/app/layout/Header";
 export const NewsPage = () => {
   return (
     <section className="FlexForApp">
-      <SideBar />
+      <div className="w-[250px] hidden md:block">
+        <SideBar />
+      </div>
       <div className="w-full">
         <Header />
         <News />
