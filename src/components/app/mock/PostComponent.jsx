@@ -1,34 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
-import { useEffect, useState } from "react";
+import axios from "axios";
+
 export const News = () => {
-  const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const tokenCookie = document.cookie.split("; ")[0];
   console.log(tokenCookie);
-  useEffect(() => {
-    console.log("entered useeffect");
-    const getUser = async () => {
-      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/me", {
-        method: "GET",
+  const fetchMorePosts = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("http://naapp-api.devamarion.fr/api/posts", {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${tokenCookie}`
+          Authorization: "Bearer " + tokenCookie
         }
       });
-      const data = await response.json();
-      setUser(data);
-    };
-    getUser();
+      setPosts((prevPosts) => [...prevPosts, ...response.data]);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMorePosts();
   }, []);
-  console.log(user);
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20 && !loading) {
+      fetchMorePosts(); // Fetch more posts when user scrolls to bottom
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const EmptyPost = {
-    Name: user.Name,
-    FamilyName: user.FamilyName,
+    Name: "",
+    FamilyName: "",
     NeuroBalises: [],
     Likes: 0,
     text: "",
     From: "News"
   };
+  const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
   const PostExemple = [
     {
       Name: "Honoré",
@@ -45,8 +65,6 @@ export const News = () => {
       text: "La newsletter de ce mois est très intéressante !"
     }
   ];
-
-  const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
 
   return (
     <>
@@ -71,6 +89,11 @@ export const News = () => {
           </div>
         </div>
         <Post PostInfo={EmptyPost} empty={true}></Post>
+
+        {posts.map((post) => (
+          <Post key={post.id} PostInfo={post} />
+        ))}
+        {loading && <p>Loading...</p>}
         <Post PostInfo={PostExemple[0]}></Post>
         <Post PostInfo={PostExemple[1]}></Post>
       </section>
