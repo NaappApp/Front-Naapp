@@ -72,7 +72,7 @@ export const UserPersonals = () => {
             />
           </div>
 
-          <button className="btn btn-plain form-submit" type="submit">
+          <button className="btn-custom btn-plain form-submit" type="submit">
             Suivant
           </button>
         </form>

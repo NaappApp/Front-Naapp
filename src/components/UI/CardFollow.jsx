@@ -28,7 +28,7 @@ export const CardFollow = async () => {
       </div>
       <div className="div3">
         {!isMobile && (
-          <button className="btn btn-plain form-submit" type="submit">
+          <button className="btn-custom btn-plain form-submit" type="submit">
             S&apos;abonner
           </button>
         )}
@@ -37,7 +37,7 @@ export const CardFollow = async () => {
             onClick={() => {
               setIsFollow("V");
             }}
-            className="btn btn-plain form-submit"
+            className="btn-custom btn-plain form-submit"
             type="submit">
             {isFollow}
           </button>

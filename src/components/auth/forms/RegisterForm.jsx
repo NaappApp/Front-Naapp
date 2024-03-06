@@ -96,13 +96,13 @@ export const RegisterForm = (props) => {
             <span className="error-message">{props.errorMessage.message}</span>
           )}
         </div>
-        <button className="btn btn-plain form-submit" type="submit">
+        <button className="btn-custom btn-plain form-submit" type="submit">
           S’inscrire
         </button>
 
         <div className="Email-MDP-MarginTop">
           <h3 className="Email-MDP-ReCenter">Déja membre ?</h3>
-          <button className="btn btn-outlined mt-6" onClick={() => navigate("/")}>
+          <button className="btn-custom btn-outlined mt-6" onClick={() => navigate("/")}>
             Connexion
           </button>
         </div>

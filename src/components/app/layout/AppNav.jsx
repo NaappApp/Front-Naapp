@@ -16,7 +16,7 @@ export const AppNav = () => {
             <ul className="h-full flex justify-center content-center">
                 <li className="px-8">
                     <Link className="" to="/app">
-                        <div className={isActive === 'app' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 bg-transparent px-2 mb-2"}>
+                        <div className={isActive === 'app' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center hover:bg-gray-100 rounded-full transition-all content-center py-2 bg-transparent px-2 mb-2"}>
                             <img className="h-8 w-6" src={HomePicto} alt="" />
                         </div>
                         <span>Accueil</span>
@@ -24,7 +24,7 @@ export const AppNav = () => {
                 </li>
                 <li className="px-8">
                     <Link className="" to="/app/event">
-                        <div className={isActive === 'event' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 bg-transparent px-2 mb-2"}>
+                        <div className={isActive === 'event' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center hover:bg-gray-100 rounded-full transition-all py-2 bg-transparent px-2 mb-2"}>
                             <img className="h-8 w-10" src={EventPicto} alt="" />
                         </div>
                         <span>Évènements</span>
@@ -32,7 +32,7 @@ export const AppNav = () => {
                 </li>
                 <li className="px-8">
                     <Link className="" to="/app/resources">
-                        <div className={isActive === 'resources' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 bg-transparent px-2 mb-2"}>
+                        <div className={isActive === 'resources' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center hover:bg-gray-100 rounded-full transition-all py-2 bg-transparent px-2 mb-2"}>
                             <img className="h-8 w-8" src={ResourcePicto} alt="" />
                         </div>
                         <span>Ressources</span>
@@ -40,7 +40,7 @@ export const AppNav = () => {
                 </li>
                 <li className="px-8">
                     <Link className="" to="/app/account">
-                        <div className={isActive === 'account' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 bg-transparent px-2 mb-2"}>
+                        <div className={isActive === 'account' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 hover:bg-gray-100 rounded-full transition-all bg-transparent px-2 mb-2"}>
                             <img className="h-8 w-8" src={UserPicto} alt="" />
                         </div>
                         <span>Compte</span>
@@ -48,7 +48,7 @@ export const AppNav = () => {
                 </li>
                 <li className="px-8">
                     <Link className="" to="/app/messages">
-                        <div className={isActive === 'messages' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 bg-transparent px-2 mb-2"}>
+                        <div className={isActive === 'messages' ? "flex justify-center content-center bg-gray-100 px-2 py-2 rounded-full mb-2" : "flex justify-center content-center py-2 hover:bg-gray-100 rounded-full transition-all bg-transparent px-2 mb-2"}>
                             <img className="h-8 w-10" src={MessagePicto} alt="" />
                         </div>
                         <span>Messages</span>
