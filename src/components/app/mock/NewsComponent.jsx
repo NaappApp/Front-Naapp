@@ -1,57 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
-import { useEffect, useState } from "react";
+import axios from "axios";
+
 export const News = () => {
-  const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const tokenCookie = document.cookie.split("; ")[0];
-  console.log(tokenCookie);
-  useEffect(() => {
-    console.log("entered useeffect");
-    const getUser = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/me`, {
-        method: "GET",
+  const fetchMorePosts = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("http://naapp-api.devamarion.fr/api/posts", {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${tokenCookie}`
+          ContentType: "application/json",
+          Authorization: "Bearer " + tokenCookie
         }
       });
-      const data = await response.json();
-      setUser(data);
-    };
-    getUser();
+      setPosts("");
+      setPosts((prevPosts) => [...prevPosts, ...response.data]);
+    } catch (error) {
+      console.error("Une erreur est survenue lors de l'affichage des posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchMorePosts();
   }, []);
 
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20 && !loading) {
+      // fetchMorePosts(); // Fetch more posts when user scrolls to bottom
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const EmptyPost = {
-    Name: user.Name,
-    FamilyName: user.FamilyName,
+    Name: "",
+    FamilyName: "",
     NeuroBalises: [],
     Likes: 0,
     text: "",
     From: "News"
   };
-  const PostExemple = [
-    {
-      Name: "Honoré",
-      FamilyName: "Lise",
-      NeuroBalises: [],
-      Likes: 66,
-      text: "Bonjour je suis nouveau sur Naapp et je suis très content de faire partie de cette communauté !"
-    },
-    {
-      Name: "Lise",
-      FamilyName: "Honoré",
-      NeuroBalises: ["Dyslexique", "Hypersensible"],
-      Likes: 50164,
-      text: "La newsletter de ce mois est très intéressante !"
-    }
-  ];
+  const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
 
   return (
     <>
       <section className="NewsPage-section">
         <Post PostInfo={EmptyPost} empty={true}></Post>
-        <Post PostInfo={PostExemple[0]}></Post>
-        <Post PostInfo={PostExemple[1]}></Post>
+
+        {posts.map((post) => (
+          <Post key={post.id} PostInfo={post} />
+        ))}
+        {loading && <p>Loading...</p>}
       </section>
     </>
   );
