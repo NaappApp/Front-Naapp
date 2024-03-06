@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from "react";
 import { LoginForm } from "../../components/auth/forms/LoginForm";
 import { Sidebar } from "../../components/auth/layout/Sidebar";

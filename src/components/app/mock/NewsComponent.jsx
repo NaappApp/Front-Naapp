@@ -8,7 +8,7 @@ export const News = () => {
   useEffect(() => {
     console.log("entered useeffect");
     const getUser = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/me`, {
+      const response = await fetch("http://naapp-api.devamarion.fr/api/auth/me", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const News = () => {
     };
     getUser();
   }, []);
-
+  console.log(user);
   const EmptyPost = {
     Name: user.Name,
     FamilyName: user.FamilyName,
@@ -46,9 +46,30 @@ export const News = () => {
     }
   ];
 
+  const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
+
   return (
     <>
       <section className="NewsPage-section">
+        <div className="NewsPage-Right-MSG">
+          <div className="NewsPage-Warning">
+            <h1>Avertissement</h1>
+            <p>
+              L’autodiagnostic peut être dangereux. Si vous suspectez une pathologie / un trouble,
+              consultez un professionnel de santé en mesure de fournir un diagnostic fiable.
+            </p>
+          </div>
+          <div className="Hashtag-Container">
+            <h2>Top Hashtag</h2>
+            <div className="Hashtag-List">
+              {TopHashtag.map((e) => (
+                <p className="Hashtag-Item" key={e}>
+                  {e}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
         <Post PostInfo={EmptyPost} empty={true}></Post>
         <Post PostInfo={PostExemple[0]}></Post>
         <Post PostInfo={PostExemple[1]}></Post>
