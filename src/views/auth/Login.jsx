@@ -31,7 +31,7 @@ export const Login = () => {
       if (data.token) {
         const expirationTime = new Date();
         expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
-
+        console.log(data.token)
         document.cookie = `${
           data.token
         }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;

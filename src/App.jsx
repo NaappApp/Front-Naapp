@@ -4,7 +4,7 @@ import { Home } from "./views/Home";
 import { Login } from "./views/auth/Login";
 import { Register } from "./views/auth/Register";
 import { Profile } from "./views/app/Profile";
-import { NewsPage } from "./views/app/NewsPage";
+import { Feed } from "./views/app/Feed";
 import { Events } from "./views/app/Events";
 import { Parameters } from "./views/app/Parameters";
 import { Tips } from "./views/app/Tips";
@@ -29,7 +29,7 @@ export const App = () => {
           <Route index={true} element={<Home />} />
 
           {/* App */}
-          <Route path="app" element={<NewsPage />}>
+          <Route path="app" element={<Feed />}>
             <Route path="profile" element={<Profile />} />
           </Route>
           <Route path="/account" element={<Accounts />} />

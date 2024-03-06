@@ -2,22 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
 import axios from "axios";
 
-export const News = () => {
+export const PostComponent = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const tokenCookie = document.cookie.split("; ")[0];
-  console.log(tokenCookie);
   const fetchMorePosts = async () => {
     setLoading(true);
     try {
       const response = await axios.get("http://naapp-api.devamarion.fr/api/posts", {
         headers: {
+          ContentType: "application/json",
           Authorization: "Bearer " + tokenCookie
         }
       });
+      setPosts("");
       setPosts((prevPosts) => [...prevPosts, ...response.data]);
     } catch (error) {
-      console.error("Error fetching posts:", error);
+      console.error("Une erreur est survenue lors de l'affichage des posts:", error);
     } finally {
       setLoading(false);
     }
@@ -30,7 +31,7 @@ export const News = () => {
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight - 20 && !loading) {
-      fetchMorePosts(); // Fetch more posts when user scrolls to bottom
+      // fetchMorePosts(); // Fetch more posts when user scrolls to bottom
     }
   };
 
@@ -49,22 +50,6 @@ export const News = () => {
     From: "News"
   };
   const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
-  const PostExemple = [
-    {
-      Name: "Honoré",
-      FamilyName: "Lise",
-      NeuroBalises: [],
-      Likes: 66,
-      text: "Bonjour je suis nouveau sur Naapp et je suis très content de faire partie de cette communauté !"
-    },
-    {
-      Name: "Lise",
-      FamilyName: "Honoré",
-      NeuroBalises: ["Dyslexique", "Hypersensible"],
-      Likes: 50164,
-      text: "La newsletter de ce mois est très intéressante !"
-    }
-  ];
 
   return (
     <>
@@ -94,8 +79,6 @@ export const News = () => {
           <Post key={post.id} PostInfo={post} />
         ))}
         {loading && <p>Loading...</p>}
-        <Post PostInfo={PostExemple[0]}></Post>
-        <Post PostInfo={PostExemple[1]}></Post>
       </section>
     </>
   );
