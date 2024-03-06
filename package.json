@@ -27,6 +27,7 @@
     "citest": "CI=true react-scripts test",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "ci:lint": "eslint . --ext .js,.ts --ignore-path .gitignore --max-warnings=0",
     "test": "react-scripts test",
     "e2e": "cypress run",
     "component": "cypress run --component",
