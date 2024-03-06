@@ -68,7 +68,9 @@ export const UserTraits = (props) => {
         </div>
       </div>
 
-      <button className="btn btn-plain form-register-btn ASD-Bnt-Next" onClick={() => Next()}>
+      <button
+        className="btn-custom btn-plain form-register-btn ASD-Bnt-Next"
+        onClick={() => Next()}>
         Suivant
       </button>
     </div>

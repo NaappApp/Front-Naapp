@@ -40,7 +40,7 @@ export const UserBio = (props) => {
             />
           </div>
 
-          <button className="btn btn-plain form-submit" type="submit">
+          <button className="btn-custom btn-plain form-submit" type="submit">
             Suivant
           </button>
           <button className="Bio-ignore-font" type="submit" onClick={() => props.BioPage("")}>

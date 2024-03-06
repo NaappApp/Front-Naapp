@@ -8,11 +8,12 @@
     background: linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
     background: -moz-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
     background: -webkit-linear-gradient(270deg, hsla(222, 97%, 76%, 1) 0%, hsla(274, 66%, 70%, 1) 100%);
-    height: 100vh;
+    min-height: 100vh;
     width: 20vw;
-    padding: 0 50px;
+    padding: 0 30px;
     display: flex;
-
+    position: fixed;
+    padding-bottom: 40px;
 }
 
 .sidebar-In-container {

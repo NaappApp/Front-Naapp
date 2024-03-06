@@ -165,7 +165,7 @@ ul {
     justify-content: space-between;
 }
 
-ul li {
+.interest {
     position: relative;
     flex: 0 0 calc(33.33% - 20px);
     margin-bottom: 20px;
@@ -180,7 +180,7 @@ ul li {
     box-sizing: border-box;
 }
 @media (max-width: 600px) {
-    ul li {
+.interest {
         flex: 0 0 calc(53.33% - 20px);
         padding: 5px;
 
@@ -188,7 +188,7 @@ ul li {
         height: 120px;
     }
 }
-ul li img {
+.interest img {
     width: 100%;
     height: 70%;
     object-fit: cover;
@@ -198,7 +198,7 @@ ul li img {
     left: 0;
     z-index: 1;
 }
-ul li span {
+.interest span {
     position: absolute;
     bottom: 10px;
     left: 50%;

@@ -31,13 +31,12 @@ export const App = () => {
           {/* App */}
           <Route path="app" element={<Feed />}>
             <Route path="profile" element={<Profile />} />
+            <Route path="account" element={<Accounts />} />
+            <Route path="event" element={<Events />} />
+            <Route path="resources" element={<Tips />} />
+            <Route path="messages" element={<NotFound />} /> {/* TODO  NOt Found for Now*/}
+            <Route path="settings" element={<Parameters />} />
           </Route>
-          <Route path="/account" element={<Accounts />} />
-
-          {/* Mock Demo */}
-          <Route path="/Events" element={<Events />} />
-          <Route path="/tips" element={<Tips />} />
-          <Route path="/settings" element={<Parameters />} />
 
           {/* Auth */}
           <Route path="login" element={<Login />} />

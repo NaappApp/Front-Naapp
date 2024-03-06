@@ -79,7 +79,7 @@ export const LoginForm = (props) => {
         </div>
         <div className="form-submit">
           <button
-            className="btn btn-plain"
+            className="btn-custom btn-plain"
             type="button"
             onClick={() => {
               setError(null);
@@ -97,7 +97,7 @@ export const LoginForm = (props) => {
 
         <div className="login-register">
           <h3>Pas encore membre ? Rejoignez nous !</h3>
-          <button className="btn btn-outlined mt-6" onClick={() => navigate("/register")}>
+          <button className="btn-custom btn-outlined mt-6" onClick={() => navigate("/register")}>
             Créer votre compte
           </button>
         </div>
