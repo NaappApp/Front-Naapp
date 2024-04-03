@@ -13,17 +13,38 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 50px;
+    gap: 15px;
 }
 
-.Account-Header-Names{
+.Account-Image{
+    height: 107px;
+    width: auto;
+}
+
+.Account-Header-Pseudo{
     font-family: 'Luciole';
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 200;
+    font-size: 12px;
     line-height: 27px;
     text-align: center;
     border-bottom: 1px ;
+    color: #ffffff;
+}
+
+.Account-Header-Pseudo .Account-Header-Name{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.Follow{
+    position: relative;
+    height: 3vh;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vh;
+    color: #ffffff;
 }
 
 .Tag-NeuroBalises{
@@ -69,19 +90,28 @@
 .Account-sub-menu .Navigation{
     display: flex;
     flex-direction: row;
-    gap: 2vh;
+    gap: 4px;
     justify-content: center;
 
 }
 
-.Follow{
-    position: absolute;
-    height: 3vh;
-    margin-top: 1vh;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5vh;
-    color: #ffffff;
+.Account-sub-menu .Navigation button{
+    font-family: 'Luciole';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: auto;
+    cursor: pointer;
+    background-color: none;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.Account-sub-menu .Navigation .Selected{
+    background-color: #F3F3FC;
 }
 
 .header-Bio{
@@ -233,5 +263,4 @@
     border: 2px solid #000000;
     border-radius: 50px;
     cursor: pointer;
-
 }

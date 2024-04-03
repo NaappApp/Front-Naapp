@@ -2,7 +2,9 @@ import AccountImg from "../../../assets/icons/account.svg";
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
 import "../../../assets/scss/pages/_Account.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser as farUsers } from "@fortawesome/free-regular-svg-icons";
+import { faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
+import { faCertificate } from "@fortawesome/free-solid-svg-icons";
+
 import { useEffect, useState } from "react";
 
 export const Account = () => {
@@ -47,15 +49,23 @@ export const Account = () => {
       <div className="Account-Header">
         <img src={user.empty ? AccountImg : Image} alt="" className="Account-Image" />
         <div>
-          <p className="Account-Header-Names">{user.username}</p>
+          <div className="Account-Header-Pseudo">
+            <p className="Account-Header-Name">
+              {user.empty ? user.name + " " + user.surname : "account name"}{" "}
+              <FontAwesomeIcon icon={faFeatherPointed} />
+            </p>
+            <p>
+              {user.empty ? user.username : "@johndoe"} <FontAwesomeIcon icon={faCertificate} />
+            </p>
+          </div>
           {/* <div className="Tag-traits">{listItems}</div> */}
         </div>
         {Object.keys(user).length !== 0 && (
           <div className="Follow">
-            <FontAwesomeIcon icon={farUsers} />
             <p className="Follow-text">
-              {/* {user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s */}
-              0 abonné(e)s - 0 Suivi(e)s
+              {user.empty
+                ? "{user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s"
+                : "0 abonné(e)s     0 Suivi(e)s"}
             </p>
           </div>
         )}
@@ -63,10 +73,18 @@ export const Account = () => {
       <div className="Account-sub">
         <div className="Account-sub-menu">
           <div className="Navigation">
-            <button className="Account-sub-menu-Item">Qui suis-je ?</button>
-            <button className="Account-sub-menu-Item">Activités</button>
-            <button className="Account-sub-menu-Item">Événement</button>
-            <button className="Account-sub-menu-Item">Paramètres</button>
+            <button className="Account-sub-menu-Item" onClick={(event) => menuDisplay(event)}>
+              Qui suis-je ?
+            </button>
+            <button className="Account-sub-menu-Item" onClick={(event) => menuDisplay(event)}>
+              Activités
+            </button>
+            <button className="Account-sub-menu-Item" onClick={(event) => menuDisplay(event)}>
+              Événement
+            </button>
+            <button className="Account-sub-menu-Item" onClick={(event) => menuDisplay(event)}>
+              Paramètres
+            </button>
           </div>
           <div className="header-Bio">
             <div className="Bio">
@@ -80,7 +98,7 @@ export const Account = () => {
               </div>
             )}
           </div>
-          <div className="Activities">
+          {/* <div className="Activities">
             <div className="Menu">
               <button className="MyPost-Title" id="MyPost-Title">
                 Mon activité
@@ -100,7 +118,7 @@ export const Account = () => {
                     <p className="Post-Header-Names">
                       {user.Name} {user.FamilyName}
                     </p>
-                    {/* <div className="Post-Header-AsdList">{listItems3}</div> */}
+                    <div className="Post-Header-AsdList">{listItems3}</div> 
                   </div>
                 </div>
                 <p className="Post-text">{user.Bio}</p>
@@ -115,15 +133,21 @@ export const Account = () => {
                   <img src={user.empty ? AccountImg : Image} alt="" className="Event-Image" />
                   <div className="Event-Header-Flex">
                     <p className="Event-Header-Names">Test</p>
-                    {/* <div className="Event-Header-AsdList">{listItems3}</div> */}
+                    <div className="Event-Header-AsdList">{listItems3}</div>
                   </div>
                 </div>
                 <p className="Event-text">{user.Bio}</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
   );
 };
+
+function menuDisplay(event) {
+  var element = event.currentTarget;
+  console.log(element);
+  element.classList.toggle("Selected");
+}
