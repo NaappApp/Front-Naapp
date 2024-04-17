@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -74,6 +75,7 @@ export const Post = (props) => {
 
       const responseNewPost = await axios.post(
         `${process.env.REACT_APP_API_BASE_URL}/posts`,
+
         postData,
         {
           headers: {
@@ -84,6 +86,7 @@ export const Post = (props) => {
       );
       setNewPost("");
       setError("");
+
     } catch (error) {
       setError("Une erreur est survenue lors de l'ajout d'un nouveau post");
       console.log("Une erreur est survenue lors de l'ajout d'un nouveau post", error);
@@ -95,6 +98,7 @@ export const Post = (props) => {
       e.preventDefault();
       await newPost(post);
     }
+
   };
 
   const closeMessage = () => {
@@ -315,11 +319,9 @@ export const Post = (props) => {
             </div>
             <div className="Post-comment">
               <FontAwesomeIcon icon={farComment} />
-              <p>Commenter</p>
             </div>
             <div className="Post-share">
               <FontAwesomeIcon icon={farShareFromSquare} />
-              <p>Partager</p>
             </div>
           </div>
         </>
