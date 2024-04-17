@@ -31,8 +31,8 @@ export const registerAccountAsync = createAsyncThunk(
 
       document.cookie = `token=${
         response.data.token
-      }; Secure;  SameSite=None; expires=${expirationTime.toUTCString()}`;
-      document.cookie = `tokenExpiration=${expirationTime.toUTCString()}; Secure; SameSite=None`;
+      }; expires=${expirationTime.toUTCString()}`;
+      document.cookie = `tokenExpiration=${expirationTime.toUTCString()};`;
 
       return response.data;
     } catch (error) {
