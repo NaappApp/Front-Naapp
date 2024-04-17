@@ -32,7 +32,7 @@ export const MobileSidebar = (props) => {
   return (
     <div className="sidebar-container-mobile">
       <div className="return-container">
-        {isMobile && (
+        {isMobile && !props.returnHide && (
           <div className="absolute top-10 left-10">
             <ReturnButton link={props.link} />
           </div>

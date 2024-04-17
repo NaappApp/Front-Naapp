@@ -18,7 +18,7 @@ export const UserBio = (props) => {
     const userData = { email, password, username, firstname, lastname, type, biography };
     const result = await dispatch(registerAccountAsync(userData));
     if (result.meta.requestStatus === "fulfilled") {
-      navigate("/");
+      navigate("/app");
     }
   };
 

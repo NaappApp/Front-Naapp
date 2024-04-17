@@ -30,6 +30,7 @@
     width: 100%;
     font-family: 'Luciole';
     font-size: 1.6rem;
+    margin: 3px;
 
     &::placeholder {
         opacity: 0.6;
@@ -44,6 +45,16 @@
     }
 }
 
+@media (max-width: 600px) {
+    .form-input {
+        font-size: 16px;
+        padding-left: 35px;
+    }
+}
+.Post-Header-Content {
+    display: flex;
+    align-items: center;
+}
 .form-input-label {
     position: absolute;
     bottom: calc(100% + 10px);
