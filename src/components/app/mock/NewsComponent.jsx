@@ -5,7 +5,7 @@ import axios from "axios";
 export const News = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const tokenCookie = document.cookie.split("; ")[0];
+  const tokenCookie = localStorage.getItem("token");
 
   const fetchMorePosts = async () => {
     setLoading(true);

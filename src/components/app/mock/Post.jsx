@@ -13,7 +13,7 @@ import {
 import axios from "axios";
 
 export const Post = (props) => {
-  const tokenCookie = document.cookie.split("; ")[0];
+  const tokenCookie = localStorage.getItem("token");
   const [post, setNewPost] = useState("");
   const [image, setImage] = useState(null);
   const [error, setError] = useState("");
@@ -23,15 +23,15 @@ export const Post = (props) => {
 
   const listItems = props.PostInfo.NeuroBalises
     ? props.PostInfo.NeuroBalises.map((e) => (
-        <p className="Post-Header-AsdList-Item" key={e}>
-          {e}
-        </p>
-      ))
+      <p className="Post-Header-AsdList-Item" key={e}>
+        {e}
+      </p>
+    ))
     : (e) => (
-        <p className="Post-Header-AsdList-Item" key={e}>
-          error
-        </p>
-      );
+      <p className="Post-Header-AsdList-Item" key={e}>
+        error
+      </p>
+    );
 
   const getUserActive = async () => {
     try {
@@ -159,11 +159,11 @@ export const Post = (props) => {
       let response = "";
       postId
         ? (response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/posts/${postId}`, {
-            headers: {
-              ContentType: "application/json",
-              Authorization: "Bearer " + tokenCookie
-            }
-          }))
+          headers: {
+            ContentType: "application/json",
+            Authorization: "Bearer " + tokenCookie
+          }
+        }))
         : (response = false);
 
       if (response.data.medias && response.data.medias.length > 0) {

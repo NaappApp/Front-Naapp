@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export const Account = () => {
   const [user, setUser] = useState({});
 
-  const tokenCookie = document.cookie.split("; ")[0];
+  const tokenCookie = localStorage.getItem("token");
   console.log(tokenCookie);
 
   useEffect(() => {

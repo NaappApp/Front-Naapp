@@ -33,9 +33,8 @@ export const Login = () => {
         const expirationTime = new Date();
         expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
 
-        document.cookie = `${data.token
-          }; expires=${expirationTime.toUTCString()}`;
-        document.cookie = `tokenExpiration=${expirationTime.toUTCString()};`;
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('expirationTime', expirationTime);
         navigate("/app");
       } else {
         const result = "err" + data.msg;

@@ -9,9 +9,8 @@ export const Home = () => {
 
   useEffect(() => {
     // Lors de la vérification de l'authentification
-    const cookies = document.cookie.split("; ");
-    const tokenCookie = cookies.find((row) => row.trim().startsWith("token="));
-    const expirationCookie = cookies.find((row) => row.trim().startsWith("tokenExpiration="));
+    const tokenCookie = localStorage.getItem("token");
+    const expirationCookie = localStorage.getItem("expirationTime");
 
     const token = tokenCookie ? tokenCookie.split("=")[1] : null;
     const expirationTime = expirationCookie ? new Date(expirationCookie.split("=")[1]) : null;

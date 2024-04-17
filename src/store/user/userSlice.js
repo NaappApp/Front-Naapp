@@ -29,11 +29,8 @@ export const registerAccountAsync = createAsyncThunk(
       const expirationTime = new Date();
       expirationTime.setTime(expirationTime.getTime() + 3 * 60 * 60 * 1000);
 
-      document.cookie = `token=${
-        response.data.token
-      }; expires=${expirationTime.toUTCString()}`;
-      document.cookie = `tokenExpiration=${expirationTime.toUTCString()};`;
-
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('expirationTime', expirationTime);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
