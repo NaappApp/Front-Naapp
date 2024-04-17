@@ -53,13 +53,17 @@ export const News = () => {
   };
   const TopHashtag = ["#Dyslexie", "#Hypersensibilité", "#TDAH", "#Autisme"];
 
+  const handleNewPost = async (newPostData) => {
+    setPosts([newPostData, ...posts]);
+  };
+
   return (
     <>
       <section className="NewsPage-section">
-        <Post PostInfo={EmptyPost} empty={true}></Post>
+        <Post PostInfo={EmptyPost} empty={true} handleNewPost={handleNewPost}></Post>
 
         {posts.map((post) => (
-          <Post key={post.id} PostInfo={post} />
+          <Post key={post.id} PostInfo={post} handleNewPost={handleNewPost}/>
         ))}
         {loading && <p>Loading...</p>}
       </section>

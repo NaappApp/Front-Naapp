@@ -84,6 +84,9 @@ export const Post = (props) => {
           }
         }
       );
+
+      props.handleNewPost(responseNewPost.data);
+
       setNewPost("");
       setError("");
 
