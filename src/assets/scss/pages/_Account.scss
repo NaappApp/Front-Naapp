@@ -24,9 +24,7 @@
 .Account-Header-Pseudo{
     font-family: 'Luciole';
     font-style: normal;
-    font-weight: 200;
-    font-size: 12px;
-    line-height: 27px;
+    line-height: 18px;
     text-align: center;
     border-bottom: 1px ;
     color: #ffffff;
@@ -35,6 +33,13 @@
 .Account-Header-Pseudo .Account-Header-Name{
     font-weight: 700;
     font-size: 16px;
+}
+
+.Inter-Font{
+    font-family: 'Inter Sans', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .Follow{
@@ -47,12 +52,38 @@
     color: #ffffff;
 }
 
-.Tag-NeuroBalises{
+.Tag-traits{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
-
+    gap: 10px;
 }
+
+.Tag-traits .Traits{
+    display: flex;
+    font: "luciole";
+    line-height: 0px;
+    font-size: 12px;
+    padding: 10px;
+    height: 23px;
+    width: auto;
+    border-radius: 20px;
+    background-color: #F3F3FC;
+}
+
+.Tag-traits .Add-Traits{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    padding: 10px;
+    height: 23px;
+    width: 38px;
+    border-radius: 20px;
+    background-color: rgba(243, 243, 252, 0.2);
+    color: #fff;
+    cursor: pointer;
+}
+
 
 .ModifyProfile{
     position: absolute;
@@ -82,6 +113,7 @@
 .Account-sub-menu{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2vh;
     width: 80%;
     margin-top: 2vw;
@@ -114,17 +146,21 @@
     background-color: #F3F3FC;
 }
 
-.header-Bio{
+.Header-Bio{
     display: flex;
     flex-direction: column;
+    width: 40vw;
+    margin-top: 0.5vw;
 }
 
 .Bio{
-    border: 4px solid #86AAFD;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     border-radius: 10px;
     min-height: 3vw;
-    width: 18vw;
-    margin-top: 20vh;
+    width: auto;
+    
 }
 
 .Bio-Title{
@@ -132,22 +168,41 @@
     font-family: 'Luciole';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 27px;
 }
 
-.Bio-text{
+.Bio-Content{
     padding: 0.4vw;
     font-size: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.Bio-Content .Bio-Content-Image{
+    height: 196px;
+    width: 264px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Bio-text{
+    font: "Inter Sans", sans-serif;
+    padding: 0.4vw;
+    font-size: 16px;
+    font-weight: 200;
 }
 
 
 .Interest{
-    border: 4px solid #86AAFD;
+    border: 2px solid #86AAFD;
     border-radius: 10px;
     height: fit-content;
     width: 18vw;
-    margin-top: 20vh;
+    margin-top: 10px;
 }
 
 .Interest-List{

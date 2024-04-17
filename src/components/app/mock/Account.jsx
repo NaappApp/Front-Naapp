@@ -1,14 +1,18 @@
 import AccountImg from "../../../assets/icons/account.svg";
+import BioImg from "../../../assets/img/bio_img.jpg";
 import Image from "../../../assets/icons/Ellipse-temp1.svg";
+
 import "../../../assets/scss/pages/_Account.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
-import { faCertificate } from "@fortawesome/free-solid-svg-icons";
+import { faFeatherPointed, faCertificate, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import { useEffect, useState } from "react";
 
 export const Account = () => {
   const [user, setUser] = useState({});
+  var listItems = [];
+  var listItems2 = [];
   const tokenCookie = document.cookie.split("; ")[1].split("=")[1];
   console.log(tokenCookie);
   useEffect(() => {
@@ -29,20 +33,19 @@ export const Account = () => {
     getUser();
   }, []);
   console.log(Object.keys(user).length);
-  // const listItems = user.traits.map(
-  //   (e) => (
-  //     <p className="Post-Header-AsdList-Item2" key={e}>
-  //       {e}
-  //     </p>
-  //   )
-  //   //todo : extracte the data from the textarea
-  // );
 
-  // const listItems2 = user.interests.map((e) => (
-  //   <p className="Post-Header-AsdList-Item2" key={e}>
-  //     {e}
-  //   </p>
-  // ));
+  if (Object.keys(user).length != 0) {
+    listItems = user.traits.map((e) => (
+      <p className="Traits" key={e}>
+        {e}
+      </p>
+    ));
+    listItems2 = user.interests.map((e) => (
+      <p className="Interest" key={e}>
+        {e}
+      </p>
+    ));
+  }
 
   return (
     <div className="Account">
@@ -51,24 +54,33 @@ export const Account = () => {
         <div>
           <div className="Account-Header-Pseudo">
             <p className="Account-Header-Name">
-              {user.empty ? user.name + " " + user.surname : "account name"}{" "}
+              {user.empty ? "Account Name" : user.firstname + " " + user.lastname}{" "}
               <FontAwesomeIcon icon={faFeatherPointed} />
             </p>
             <p>
-              {user.empty ? user.username : "@johndoe"} <FontAwesomeIcon icon={faCertificate} />
+              <span className="Inter-Font">
+                {"@" + user.username + " "}
+                <FontAwesomeIcon icon={faCertificate} />
+              </span>
             </p>
           </div>
-          {/* <div className="Tag-traits">{listItems}</div> */}
         </div>
         {Object.keys(user).length !== 0 && (
           <div className="Follow">
             <p className="Follow-text">
-              {user.empty
-                ? "{user.followers.length} abonné(e)s - {user.following.length} Suivi(e)s"
-                : "0 abonné(e)s     0 Suivi(e)s"}
+              {user.followers.length}
+              <span className="Inter-Font"> followers - </span>
+              {user.following.length}
+              <span className="Inter-Font"> suivis</span>
             </p>
           </div>
         )}
+        <div className="Tag-traits">
+          {listItems}
+          <div className="Add-Traits">
+            <FontAwesomeIcon icon={faPlus} />
+          </div>
+        </div>
       </div>
       <div className="Account-sub">
         <div className="Account-sub-menu">
@@ -86,15 +98,24 @@ export const Account = () => {
               Paramètres
             </button>
           </div>
-          <div className="header-Bio">
+          <div className="Header-Bio">
             <div className="Bio">
-              <p className="Bio-Title">Bio</p>
-              <p className="Bio-text">{user.biography}</p>
+              <h2 className="Bio-Title">
+                <FontAwesomeIcon icon={faUser} /> Qui suis-je ?
+              </h2>
+              <div className="Bio-Content">
+                <img
+                  src={user.empty ? AccountImg : BioImg}
+                  alt="bio image"
+                  className="Bio-Content-Image"
+                />
+                <p className="Bio-text">{user.biography}</p>
+              </div>
             </div>
             {Object.keys(user).length !== 0 && (
               <div className="Interest">
                 <p className="Interest-Title">Centre d&apos;intérêt</p>
-                {/* <div className="Interest-List">{listItems2}</div> */}
+                <div className="Interest-List">{listItems2}</div>
               </div>
             )}
           </div>
