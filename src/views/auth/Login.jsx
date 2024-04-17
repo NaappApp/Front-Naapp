@@ -39,7 +39,6 @@ export const Login = () => {
         navigate("/app");
       } else {
         const result = "err" + data.msg;
-        console.log(result);
         throw new Error(result);
       }
     } catch (error) {

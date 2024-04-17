@@ -23,6 +23,22 @@
 .sidebar input[type="checkbox"] {
     display: none;
 }
+@media (max-width: 768px) {
+    .h-full.flex.justify-center.content-center {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: transparent;
+        border-top: 1px solid #e4e4e4;
+        padding: 10px;
+    }
+
+    .h-full.flex.justify-center.content-center li {
+        margin: -18px;
+    }
+}
+
 
 .sidebar-container {
     display: flex;

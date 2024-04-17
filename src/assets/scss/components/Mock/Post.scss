@@ -6,12 +6,25 @@
     align-items: space-between;
     justify-content: flex-start;
     height: fit-content;
-    width: 40vw;
+    width: 50vw;
     background-color: #f5f5f5;
     border-radius: 5px;
     box-shadow: -2px 2px 2px 2px rgba(128, 128, 128, 0.46);
     margin-left: 3vw;
     line-height: 1.5vw
+}
+
+@media (max-width: 600px) {
+    .Post {
+        width: 85vw;
+        box-shadow: 5px 4px 4px -4px rgba(128, 128, 128, 0.51);
+        background-color: rgba(245, 245, 245, 0.55);
+        margin: 20px;
+    }
+
+    .flexPostContainer {
+        margin-top: 80px;
+    }
 }
 .Post-input {
     margin-top: 5vh;
@@ -48,8 +61,8 @@
     margin-top: 10vh;
     border: none;
     width: 95%;
-    background-color: #f5f5f5;
-    margin-left: 1vw;
+    background-color: transparent;
+    margin-left: 3vw;
     resize: vertical;
     padding-bottom: 4vh;
     //border-bottom: 2px solid black;
@@ -72,7 +85,8 @@
 .Post-Image {
     height: 65px;
     width: 65px;
-    
+    border-radius: 50%;
+    margin-right: 10px; /* Ajout de marge à droite pour séparer l'image du texte */
 }
 
 .Post-Header-Flex {
@@ -90,6 +104,11 @@
     margin-top: 1vh;
     margin-bottom: 0.5vh;
     margin-left: 1vw;
+}
+
+.Post-area-input {
+    background-color: transparent;
+    font-size: 16px;
 }
 
 .Post-Header-AsdList {
@@ -110,6 +129,10 @@
     border: #B87FE5 2px solid;
     padding: 2px;
     border-radius: 5px;
+}
+.Post-Image-Upload > input {
+    cursor: pointer;
+    display: none;
 }
 
 .Post-Header-AsdList-Item2 {
@@ -138,12 +161,36 @@
 .Post-like,.Post-comment,.Post-share {
     display: flex;
     align-items: center;
-    justify-content: flex-start;  
-    margin-top: 0.5vh;                            
-    margin-bottom: 0.5vh;    
+    justify-content: flex-start;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
     gap: 0.3vw;
     cursor: pointer;
     user-select:none
+}
+
+.delete-icon {
+    margin: 13px;
+    float: right;
+}
+.Post-media {
+    max-width: 100%;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    display: block;
+}
+.delete-popup {
+    z-index: 99999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .Post-like > p {
