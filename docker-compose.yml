@@ -1,0 +1,22 @@
+services:
+
+  app:
+    container_name: app
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/home/node/app
+      - /home/node/app/node_modules
+    command: npm start
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
