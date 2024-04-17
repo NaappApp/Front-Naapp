@@ -9,18 +9,18 @@
 @use 'components/common/errors.scss';
 @use 'components/layout/sidebar';
 @use 'components/layout/returnBtn';
-@use 'components/auth/forms';
-@use 'components/auth/userType';
-@use 'components/auth/userAccount';
-@use 'components/auth/userBio';
-@use 'components/auth/userNames';
-@use 'components/auth/userTraits';
+@use 'components/Auth/forms';
+@use 'components/Auth/userType';
+@use 'components/Auth/userAccount';
+@use 'components/Auth/userBio';
+@use 'components/Auth/userNames';
+@use 'components/Auth/userTraits';
 
 //MOCK
 @use 'components/Mock/ComingSoon.scss';
 @use 'components/Mock/Post';
 @use 'components/Mock/NewsPage';
-@use 'components/layout/InternalSideBar';
+@use 'components/layout/internalSidebar';
 
 
 /* 4 - pages */
