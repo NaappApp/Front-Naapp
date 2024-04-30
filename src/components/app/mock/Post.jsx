@@ -23,15 +23,15 @@ export const Post = (props) => {
 
   const listItems = props.PostInfo.NeuroBalises
     ? props.PostInfo.NeuroBalises.map((e) => (
-      <p className="Post-Header-AsdList-Item" key={e}>
-        {e}
-      </p>
-    ))
+        <p className="Post-Header-AsdList-Item" key={e}>
+          {e}
+        </p>
+      ))
     : (e) => (
-      <p className="Post-Header-AsdList-Item" key={e}>
-        error
-      </p>
-    );
+        <p className="Post-Header-AsdList-Item" key={e}>
+          error
+        </p>
+      );
 
   const getUserActive = async () => {
     try {
@@ -89,7 +89,6 @@ export const Post = (props) => {
 
       setNewPost("");
       setError("");
-
     } catch (error) {
       setError("Une erreur est survenue lors de l'ajout d'un nouveau post");
       console.log("Une erreur est survenue lors de l'ajout d'un nouveau post", error);
@@ -101,7 +100,6 @@ export const Post = (props) => {
       e.preventDefault();
       await newPost(post);
     }
-
   };
 
   const closeMessage = () => {
@@ -162,11 +160,11 @@ export const Post = (props) => {
       let response = "";
       postId
         ? (response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/posts/${postId}`, {
-          headers: {
-            ContentType: "application/json",
-            Authorization: "Bearer " + tokenCookie
-          }
-        }))
+            headers: {
+              ContentType: "application/json",
+              Authorization: "Bearer " + tokenCookie
+            }
+          }))
         : (response = false);
 
       if (response.data.medias && response.data.medias.length > 0) {

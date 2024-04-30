@@ -63,7 +63,7 @@ export const News = () => {
         <Post PostInfo={EmptyPost} empty={true} handleNewPost={handleNewPost}></Post>
 
         {posts.map((post) => (
-          <Post key={post.id} PostInfo={post} handleNewPost={handleNewPost}/>
+          <Post key={post.id} PostInfo={post} handleNewPost={handleNewPost} />
         ))}
         {loading && <p>Loading...</p>}
       </section>

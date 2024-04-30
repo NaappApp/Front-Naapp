@@ -30,7 +30,7 @@ export const UserType = () => {
     },
     {
       name: "regular",
-      title: "Je suis curieux.se / Je m’informe",
+      title: "Je suis non-sensibilisé / Je m’informe",
       description:
         "Je ne suis pas directement concerné.e par le sujet mais je souhaite en apprendre plus",
       isSelected: false
@@ -67,6 +67,7 @@ export const UserType = () => {
                 <img
                   className="form-input-radio--chevron"
                   src={Chevron}
+                  style={{ fill: profile.isSelected ? "#B87FE5" : "" }}
                   alt="chevron bouton droit"
                 />
                 <input
